@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+
      <!-- CDN di Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 
@@ -22,8 +26,25 @@
 
   <!-- Collegamento al file JavaScript con il tuo codice React -->
   <script defer src="app.js"></script>
+
 </head>
 <body>
+
+<nav class="navbar navbar-dark" style="background-color: #333333;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="icon/icon-32x32.png" alt="Logo" width="32" height="32" class="d-inline-block align-text-top">
+      Bootstrap
+    </a>
+    <div class="d-flex">
+      <a class="nav-link text-light" href="#">Login</a>
+      <a class="nav-link text-light" href="#">Signup</a>
+    </div>
+  </div>
+</nav>
+
+
+
     
 
 <!-- Div dove React inietterà il contenuto -->
