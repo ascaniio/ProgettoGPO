@@ -1,0 +1,6 @@
+.icon-adjust {
+    margin-right: 0.1em; /* Spazio minimo per evitare che tocchi il testo */
+    position: relative;
+    top: -2px; /* Alza leggermente l'icona */
+}
+

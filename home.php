@@ -24,22 +24,28 @@
 
 
 
-<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd; height: 80px;">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand">
-        <img src="icon/icon-32x32.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      </a>
-      <!-- Rimozione dei link e aggiunta del pulsante Login -->
-      <div class="ms-auto">
-        <button class="btn btn-primary" type="button">Login</button>
-      </div>
-    </div>
-  </div>
-</nav>
+
+<nav class="navbar navbar-expand-lg" style="background-color: black; height: 80px;">
+        <div class="container-fluid">
+            <!-- Bottone Login a sinistra -->
+            <a class="navbar-brand ms-auto" href="#">
+                <img src="icon/icon-32x32.png" alt="Logo" width="40" height="40">
+            </a>
+            
+
+            <!-- Barra di ricerca al centro -->
+            <form class="d-flex mx-auto" role="search">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Cerca" aria-label="Cerca">
+                    <button class="btn btn-outline-primary" type="submit">Cerca</button>
+                </div>
+            </form>
+
+            <!-- Logo a destra -->
+            <button class="btn btn-primary me-auto" type="button">Login</button>
+        </div>
+    </nav>
+
 
 
 
