@@ -92,14 +92,15 @@
                         <!-- Password -->
                         <div class="col-12 mb-4">
                             <div class="input-group mb-1" style="position: relative;">
-                                <span class="input-group-text" style="border-right: 0;">
+                                <span class="input-group-text"
+                                    style="border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; border-right: 0;">
                                     <ion-icon name="key-outline" style="font-size: 1.2rem;"></ion-icon>
                                 </span>
 
                                 <div class="form-floating" style="flex-grow: 1;">
                                     <input type="password" class="form-control" id="password_login"
                                         name="password_login" placeholder="Password"
-                                        style="border-radius: 0.375rem; padding-right: 2.5rem;">
+                                        style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; padding-right: 2.5rem;">
                                     <label for="password_login">Password</label>
                                 </div>
 
@@ -280,6 +281,142 @@
 
                         <!--Email e Telefono-->
                         <div class="row">
+                            <?php
+                            foreach ($array_anni as $i) {$array_prefissi = [
+                                "+1 Stati Uniti/Canada",
+                                "+7 Russia/Kazakistan",
+                                "+20 Egitto",
+                                "+27 Sudafrica",
+                                "+30 Grecia",
+                                "+31 Paesi Bassi",
+                                "+32 Belgio",
+                                "+33 Francia",
+                                "+34 Spagna",
+                                "+36 Ungheria",
+                                "+39 Italia",
+                                "+40 Romania",
+                                "+41 Svizzera",
+                                "+43 Austria",
+                                "+44 Regno Unito",
+                                "+45 Danimarca",
+                                "+46 Svezia",
+                                "+47 Norvegia",
+                                "+48 Polonia",
+                                "+49 Germania",
+                                "+51 Perù",
+                                "+52 Messico",
+                                "+53 Cuba",
+                                "+54 Argentina",
+                                "+55 Brasile",
+                                "+56 Cile",
+                                "+57 Colombia",
+                                "+58 Venezuela",
+                                "+60 Malesia",
+                                "+61 Australia",
+                                "+62 Indonesia",
+                                "+63 Filippine",
+                                "+64 Nuova Zelanda",
+                                "+65 Singapore",
+                                "+66 Thailandia",
+                                "+81 Giappone",
+                                "+82 Corea del Sud",
+                                "+84 Vietnam",
+                                "+86 Cina",
+                                "+90 Turchia",
+                                "+91 India",
+                                "+92 Pakistan",
+                                "+93 Afghanistan",
+                                "+94 Sri Lanka",
+                                "+95 Myanmar",
+                                "+98 Iran",
+                                "+211 Sud Sudan",
+                                "+212 Marocco",
+                                "+213 Algeria",
+                                "+216 Tunisia",
+                                "+218 Libia",
+                                "+220 Gambia",
+                                "+221 Senegal",
+                                "+222 Mauritania",
+                                "+223 Mali",
+                                "+224 Guinea",
+                                "+225 Costa d'Avorio",
+                                "+226 Burkina Faso",
+                                "+227 Niger",
+                                "+228 Togo",
+                                "+229 Benin",
+                                "+230 Mauritius",
+                                "+231 Liberia",
+                                "+232 Sierra Leone",
+                                "+233 Ghana",
+                                "+234 Nigeria",
+                                "+235 Ciad",
+                                "+236 Repubblica Centrafricana",
+                                "+237 Camerun",
+                                "+238 Capo Verde",
+                                "+239 Sao Tome e Principe",
+                                "+240 Guinea Equatoriale",
+                                "+241 Gabon",
+                                "+242 Congo (Brazzaville)",
+                                "+243 Congo (Kinshasa)",
+                                "+244 Angola",
+                                "+245 Guinea-Bissau",
+                                "+246 Diego Garcia",
+                                "+248 Seychelles",
+                                "+249 Sudan",
+                                "+250 Ruanda",
+                                "+251 Etiopia",
+                                "+252 Somalia",
+                                "+253 Gibuti",
+                                "+254 Kenya",
+                                "+255 Tanzania",
+                                "+256 Uganda",
+                                "+257 Burundi",
+                                "+258 Mozambico",
+                                "+260 Zambia",
+                                "+261 Madagascar",
+                                "+262 Isola della Réunion",
+                                "+263 Zimbabwe",
+                                "+264 Namibia",
+                                "+265 Malawi",
+                                "+266 Lesotho",
+                                "+267 Botswana",
+                                "+268 Eswatini",
+                                "+269 Comore",
+                                "+290 Sant'Elena",
+                                "+291 Eritrea",
+                                "+297 Aruba",
+                                "+298 Isole Fær Øer",
+                                "+299 Groenlandia",
+                                "+350 Gibilterra",
+                                "+351 Portogallo",
+                                "+352 Lussemburgo",
+                                "+353 Irlanda",
+                                "+354 Islanda",
+                                "+355 Albania",
+                                "+356 Malta",
+                                "+357 Cipro",
+                                "+358 Finlandia",
+                                "+359 Bulgaria",
+                                "+370 Lituania",
+                                "+371 Lettonia",
+                                "+372 Estonia",
+                                "+373 Moldavia",
+                                "+374 Armenia",
+                                "+375 Bielorussia",
+                                "+376 Andorra",
+                                "+377 Monaco",
+                                "+378 San Marino",
+                                "+380 Ucraina",
+                                "+381 Serbia",
+                                "+382 Montenegro",
+                                "+383 Kosovo",
+                                "+385 Croazia",
+                                "+386 Slovenia",
+                                "+387 Bosnia",
+                            ];
+
+                            ?>
+
                             <div class="col-md-6 mb-4">
                                 <div class="input-group mb-1">
                                     <span class="input-group-text">
@@ -298,7 +435,20 @@
                                     <span class="input-group-text">
                                         <ion-icon name="call-outline" style="font-size: 1.2rem;"></ion-icon>
                                     </span>
-                                    <div class="form-floating">
+
+                                    <div class="form-floating" style="flex-basis: 23%; max-width: 23%;">
+                                        <select class="form-select" id="giorno_register" name="giorno_register"
+                                            style="font-family: 'Arial', sans-serif; text-align: center; padding-top: 0.75rem; height: calc(2.25rem + 2px);">
+                                            <option selected>-</option>
+                                            <?php
+                                            foreach ($array_prefissi as $i) {
+                                                echo "<option value=\"$i\">" . $i . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-floating" style="flex-grow: 1;">
                                         <input type="text" class="form-control" id="telefono_register"
                                             name="telefono_register" placeholder="Telefono">
                                         <label for="telefono_register">Telefono</label>
@@ -310,20 +460,19 @@
 
 
                         <!-- Password e Conferma Password -->
-
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="input-group mb-1" style="position: relative;">
-                                    <span class="input-group-text" style="border-right: 0;">
+                                    <span class="input-group-text"
+                                        style="border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; border-right: 0;">
                                         <ion-icon name="key-outline" style="font-size: 1.3rem;"></ion-icon>
                                     </span>
                                     <div class="form-floating" style="flex-grow: 1;">
                                         <input type="password" class="form-control" id="password_register"
                                             name="password_register" placeholder="Password"
-                                            style="border-radius: 0.375rem; padding-right: 2.5rem;">
+                                            style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; padding-right: 2.5rem;">
                                         <label for="password_register">Password</label>
                                     </div>
-                                    <!-- Icona occhio per mostrare/nascondere password -->
                                     <ion-icon name="eye-outline" id="toggleEyeIconPassword"
                                         onclick="togglePasswordVisibility('password_register', 'toggleEyeIconPassword')"
                                         style="font-size: 1.3rem; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; pointer-events: auto;"></ion-icon>
@@ -332,16 +481,16 @@
 
                             <div class="col-md-6 mb-4">
                                 <div class="input-group mb-1" style="position: relative;">
-                                    <span class="input-group-text" style="border-right: 0;">
+                                    <span class="input-group-text"
+                                        style="border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; border-right: 0;">
                                         <ion-icon name="key-outline" style="font-size: 1.3rem;"></ion-icon>
                                     </span>
                                     <div class="form-floating" style="flex-grow: 1;">
                                         <input type="password" class="form-control" id="passwordConf_register"
                                             name="passwordConf_register" placeholder="Conferma Password"
-                                            style="border-radius: 0.375rem; padding-right: 2.5rem;">
+                                            style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; padding-right: 2.5rem;">
                                         <label for="passwordConf_register">Conferma Password</label>
                                     </div>
-                                    <!-- Icona occhio per mostrare/nascondere password -->
                                     <ion-icon name="eye-outline" id="toggleEyeIconPasswordConf"
                                         onclick="togglePasswordVisibility('passwordConf_register', 'toggleEyeIconPasswordConf')"
                                         style="font-size: 1.3rem; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; pointer-events: auto;"></ion-icon>
