@@ -15,21 +15,26 @@
 <body>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
-
     <nav class="navbar custom-navbar">
         <div class="container-fluid">
             <div class="row w-100 align-items-center">
                 <!-- Colonna sinistra con il logo -->
                 <div class="col text-start ms-0">
                     <a class="navbar-brand">
-                        <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24">
+                        <img src="icon/logo.png" alt="Logo" width="40" height="40">
                     </a>
                 </div>
 
-                <!-- Colonna centrale con il bottone -->
-                <div class="col text-center">
-                    <button class="btn btn-primary">Bottone al centro</button>
+                <!-- Colonna centrale con la barra di ricerca -->
+                <div class="col text-center position-relative">
+                    <input class="form-control search-input pe-5" type="text" placeholder="Cerca..." aria-label="Search"
+                        style="padding-right: 3rem;">
+                    <ion-icon name="send" class="search-icon" onclick="submitSearch()"
+                        style="font-size: 1.2rem; cursor: pointer; position: absolute; top: 50%; right: 1.2rem; transform: translateY(-50%);"></ion-icon>
                 </div>
+
+
+
 
                 <!-- Colonna destra con il pulsante di login e l'icona -->
                 <div class="col text-end me-0 d-flex justify-content-end align-items-center">
@@ -39,6 +44,8 @@
             </div>
         </div>
     </nav>
+
+
 
 
 
@@ -282,7 +289,7 @@
                         <!--Email e Telefono-->
                         <div class="row">
                             <?php
-                            foreach ($array_anni as $i) {$array_prefissi = [
+                            $array_prefissi = [
                                 "+1 Stati Uniti/Canada",
                                 "+7 Russia/Kazakistan",
                                 "+20 Egitto",
@@ -430,6 +437,7 @@
                                 </div>
                             </div>
 
+
                             <div class="col-md-6 mb-4">
                                 <div class="input-group mb-1">
                                     <span class="input-group-text">
@@ -437,7 +445,8 @@
                                     </span>
 
                                     <div class="form-floating" style="flex-basis: 23%; max-width: 23%;">
-                                        <select class="form-select" id="giorno_register" name="giorno_register"
+                                        <select class="form-select" id="prefisso_select" name="giorno_register"
+                                            onchange="aggiornaVisualizzazionePrefisso()"
                                             style="font-family: 'Arial', sans-serif; text-align: center; padding-top: 0.75rem; height: calc(2.25rem + 2px);">
                                             <option selected>-</option>
                                             <?php
@@ -455,6 +464,28 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <script>
+                                function aggiornaVisualizzazionePrefisso() {
+                                    var select = document.getElementById("prefisso_select");
+                                    var selectedOption = select.options[select.selectedIndex].value;
+
+                                    // Estrai solo il prefisso numerico
+                                    var prefisso = selectedOption.split(" ")[0];
+
+                                    // Imposta solo il prefisso come testo visualizzato nell'elemento select
+                                    select.options[select.selectedIndex].textContent = prefisso;
+
+                                    // Riassegna le opzioni originali in modo che mostrino ancora il paese quando apri il menu
+                                    Array.from(select.options).forEach(option => {
+                                        var valoreCompleto = option.value;
+                                        option.textContent = valoreCompleto;
+                                    });
+
+                                    // Visualizza solo il prefisso nel testo selezionato
+                                    select.options[select.selectedIndex].textContent = prefisso;
+                                }
+                            </script>
                         </div>
 
 
@@ -529,6 +560,11 @@
                 eyeIcon.setAttribute("name", "eye-outline");
             }
         }
+
+        function submitSearch() {
+            alert('Ricerca inviata!'); // Qui puoi sostituire con l'azione reale di invio
+        }
+
     </script>
 
 
