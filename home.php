@@ -546,6 +546,256 @@
     </div>
 
 
+    <p>CIAO</p>
+
+
+
+
+
+    <div class="d-flex align-items-center justify-content-center pt-3">
+          <div class="card" style="width: 1000px; margin: auto; background-color: #303030; color: white; border-color: black;">
+            <div class="card-header" style="text-align: center; background-color: #303030; color: white; border-color: black; box-shadow: 4px 4px 10px black;" id="C">
+              <img style="height: 40px; width: 40px;" src="icons/C_50x50.png">
+            </div>
+            <ul class="list-group list-group-flush">
+
+              <!--#1-->
+
+              <li class="list-group-item" style="background-color: #303030; color: white; border-color: black; box-shadow: 4px 4px 10px black;">                                                                      
+                <div class="item-first-row row align-items-start">
+                  <div class="col-9 d-flex align-self-center" style="font-size: 25px; font-weight: 600;">Calcolatrice Base</div>
+                  <div class="col-3 d-flex justify-content-end">
+                    <a href="file/C/calcolatriceBase.c" download="calcolatriceBase.c">
+                      <button type="button" class="btn btn-primary position-relative download-button" data-toggle="button" aria-pressed="false" autocomplete="off" style="font-weight: 600;">Download</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="item-second-row row">
+                  <i>
+                    Calcolatrice base in C che esegue le 4 operazioni di base <u>+ - x /</u>
+                  </i>
+                </div>
+                <div class="item-third-row row">
+                  <i class="text-muted" style="font-size: 11px;">
+                    <br>30/9/2022
+                  </i>
+                </div>
+              </li> 
+
+              <!--#2-->
+
+              <li class="list-group-item" style="background-color: #303030; color: white; border-color: black; box-shadow: 4px 4px 10px black;">                                                                      
+                <div class="item-first-row row align-items-start">
+                  <div class="col-9 d-flex align-self-center" style="font-size: 25px; font-weight: 600;">Calcolatrice con Potenza</div>
+                  <div class="col-3 d-flex justify-content-end">
+                    <a href="file/C/calcolatriceExpanded.c" download="CalcolatriceExpanded.c">
+                      <button type="button" class="btn btn-primary position-relative download-button" data-toggle="button" aria-pressed="false" autocomplete="off" style="font-weight: 600;">Download</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="item-second-row row">
+                  <i>
+                    Calcolatrice base in C che esegue le 4 operazioni di base <u>+ - x /</u> con aggiunta la potenza
+                  </i>
+                </div>
+                <div class="item-third-row row">
+                  <i class="text-muted" style="font-size: 11px;">
+                    <br>7/10/2022
+                  </i>
+                </div>
+              </li> 
+
+              <!--#3-->
+
+              <li class="list-group-item" style="background-color: #303030; color: white; border-color: black; box-shadow: 4px 4px 10px black;">                                                                      
+                <div class="item-first-row row align-items-start">
+                  <div class="col-9 d-flex align-self-center" style="font-size: 25px; font-weight: 600;">Le Matrici</div>
+                  <div class="col-3 d-flex justify-content-end">
+                    <a href="file/C/Matrici.c" download="Matrici.c">
+                      <button type="button" class="btn btn-primary position-relative download-button" data-toggle="button" aria-pressed="false" autocomplete="off" style="font-weight: 600;">Download</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="item-second-row row">
+                  <i>
+                    Cosa sono le matrici in C inserimento per <u>riga</u> e per <u>colonna</u>
+                  </i>
+                </div>
+                <div class="item-third-row row">
+                  <i class="text-muted" style="font-size: 11px;">
+                    <br>4/2/2023
+                  </i>
+                </div>
+              </li> 
+
+              <!--#4-->
+
+              <li class="list-group-item" style="background-color: #303030; color: white; border-color: black; box-shadow: 4px 4px 10px black;">                                                                      
+                <div class="item-first-row row align-items-start">
+                  <div class="col-9 d-flex align-self-center" style="font-size: 25px; font-weight: 600;">Verifica Informatica</div>
+                  <div class="col-3 d-flex justify-content-end">
+                    <a href="file/C/Verifica.c" download="Verifica.c">
+                      <button type="button" class="btn btn-primary position-relative download-button" data-toggle="button" aria-pressed="false" autocomplete="off" style="font-weight: 600;">Download</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="item-second-row row">
+                  <i>
+                    Verifica di informaitca con <u>stringhe</u>, <u>array</u> e <u>funzioni</u>
+                  </i>
+                </div>
+                <div class="item-third-row row">
+                  <i class="text-muted" style="font-size: 11px;">
+                    <br>13/2/2023
+                  </i>
+                </div>
+              </li> 
+
+              <!--#5-->
+
+              <li class="list-group-item" style="background-color: #303030; color: white; border-color: black; box-shadow: 4px 4px 10px black;">                                                                      
+                <div class="item-first-row row align-items-start">
+                  <div class="col-9 d-flex align-self-center" style="font-size: 25px; font-weight: 600;">Le Librerie</div>
+                  <div class="col-3 d-flex justify-content-end">
+                    <a href="file/C/EsercizioLibrerie.zip" download="EsercizioLibrerie.zip">
+                      <button type="button" class="btn btn-primary position-relative download-button" data-toggle="button" aria-pressed="false" autocomplete="off" style="font-weight: 600;">Download</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="item-second-row row">
+                  <i>
+                    Esercizio con implementazione di <u>2 librerie</u>
+                  </i>
+                </div>
+                <div class="item-third-row row">
+                  <i class="text-muted" style="font-size: 11px;">
+                    <br>17/2/2023
+                  </i>
+                </div>
+              </li>
+
+              <!--#6-->
+
+              <li class="list-group-item" style="background-color: #303030; color: white; border-color: black; box-shadow: 4px 4px 10px black;">                                                                      
+                <div class="item-first-row row align-items-start">
+                  <div class="col-9 d-flex align-self-center" style="font-size: 25px; font-weight: 600;">Le Strutture</div>
+                  <div class="col-3 d-flex justify-content-end">
+                    <a href="file/C/Strutture.c" download="Strutture.c">
+                      <button type="button" class="btn btn-primary position-relative download-button" data-toggle="button" aria-pressed="false" autocomplete="off" style="font-weight: 600;">Download</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="item-second-row row">
+                  <i>
+                    Esercizio con utilizzo di <u>strutture</u> in c
+                  </i>
+                </div>
+                <div class="item-third-row row">
+                  <i class="text-muted" style="font-size: 11px;">
+                    <br>1/3/2023
+                  </i>
+                </div>
+              </li> 
+              
+            </ul>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+   <style>
+    footer {
+        color: black;
+        margin-top: 10px;
+    }
+
+    .copy {
+        font-size: 12px;
+        padding: 10px;
+        border-top: 1px solid black !important; /* Riga in alto */
+    }
+
+    .footer-middle {
+        padding-top: 2em;
+        color: black;
+    }
+
+    .social-icons a {
+        color: black;
+        margin: 0 15px; /* Maggiore distanza tra le icone */
+        font-size: 30px; /* Icone più grandi */
+        transition: color 0.3s ease;
+        text-decoration: none; /* Rimuove la riga sotto i link */
+        display: flex;
+        align-items: center;
+    }
+
+    .social-icons a:hover {
+        color: #007bff; /* Colore al passaggio del mouse */
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer-left, .footer-right {
+        display: flex;
+    }
+
+    .footer-center {
+        text-align: center;
+        flex-grow: 1;
+    }
+</style>
+
+<footer class="mainfooter" role="contentinfo">
+    <div class="footer-middle">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12 footer-content">
+                    <!-- Left social icons -->
+                    <div class="footer-left">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+
+                    <!-- Center copyright -->
+                    <div class="footer-center">
+                        <p class="copy" style="font-size: 15px;">&copy; Copyright 2024 - sitooperai.com</p>
+                    </div>
+
+                    <!-- Right social icons -->
+                    <div class="footer-right">
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
 
     <script>
         function togglePasswordVisibility(passwordId, iconId) {
