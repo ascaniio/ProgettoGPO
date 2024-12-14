@@ -17,6 +17,8 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
         body {
             display: flex;
@@ -50,37 +52,101 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             margin-right: 8px;
         }
 
-        .image-upload {
-            position: relative;
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: #f0f0f0;
+        .profile-picture-container {
             display: flex;
             align-items: center;
+            /* Centrare verticalmente */
+            gap: 10px;
+            /* Spaziatura tra immagine e pulsanti */
+        }
+
+        .profile-picture {
+            width: 50px;
+            /*cambia questo per grandezza img */
+            height: 50px;
+            /*cambia questo per grandezza img */
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            display: flex;
             justify-content: center;
-            cursor: pointer;
+            align-items: center;
+            background-color: #fff;
         }
 
-        .image-upload input[type="file"] {
-            display: none;
-        }
-
-        .image-upload img {
+        .profile-picture img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .image-upload .icon-camera {
-            font-size: 2rem;
-            color: #6c757d;
+        .profile-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            /* Spaziatura tra i pulsanti */
+        }
+
+        .profile-buttons .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            /* Larghezza dei pulsanti */
+        }
+
+        .modal-content {
+            border: none;
+            /* Rimuove i bordi */
+            padding: 20px;
+            /* Spaziatura interna */
+            border-radius: 0.5rem;
+            /* Arrotonda gli angoli */
+        }
+
+        .profile-picture img {
+            width: 50px;
+            /*cambia questo per grandezza img */
+            /* Dimensione immagine */
+            height: 50px;
+            /*cambia questo per grandezza img */
+
+            /
+            /* Adatta l'immagine */
+
+            /* Aggiunge un bordo sottile */
+        }
+
+        .icon-padding {
+            padding: 2px 4px;
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            /* Centrare verticalmente */
+        }
+
+        .nav-link.active {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link.active ion-icon {
+            padding: 1px 2px;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .nav-link.active span {
+            margin-left: 5px;
         }
     </style>
 </head>
 
 <body>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 sidebar">
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
@@ -90,51 +156,52 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         <hr>
         <ul class="nav nav-pills flex-column mb-auto" id="sidebarNav">
             <li class="nav-item">
-                <a href="#" class="nav-link active" data-target="home">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#home"></use>
-                    </svg>
-                    Home
+                <a href="#" class="nav-link active" data-target="home" style="display: flex; align-items: center;">
+                    <ion-icon name="home-outline"
+                        style="padding: 1px 2px; width: 20px; height: 20px; vertical-align: middle;"></ion-icon>
+                    <span style="margin-left: 5px;">Home</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link" data-target="dashboard">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#speedometer2"></use>
-                    </svg>
-                    Analytics
+
+
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="analytics" style="display: flex; align-items: center;">
+                    <ion-icon name="stats-chart-outline" 
+                        style="padding: 1px 2px; width: 20px; height: 20px; vertical-align: middle;"></ion-icon>
+                    <span style="margin-left: 5px;">Analytics</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link" data-target="orders">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#table"></use>
-                    </svg>
-                    Tavoli
+
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="tables" style="display: flex; align-items: center;">
+                    <ion-icon name="restaurant-outline"
+                        style="padding: 1px 2px; width: 20px; height: 20px; vertical-align: middle;"></ion-icon>
+                    <span style="margin-left: 5px;">Tavoli</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link" data-target="products">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                    Ordini
+
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="orders" style="display: flex; align-items: center;">
+                    <ion-icon name="receipt-outline"
+                        style="padding: 1px 2px; width: 20px; height: 20px; vertical-align: middle;"></ion-icon>
+                    <span style="margin-left: 5px;">Ordini</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link" data-target="customers">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                    Portate
+          
+            
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="menu" style="display: flex; align-items: center;">
+                    <ion-icon name="fast-food-outline"
+                        style="padding: 1px 2px; width: 20px; height: 20px; vertical-align: middle;"></ion-icon>
+                    <span style="margin-left: 5px;">Menù</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link" data-target="customers">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                    Personale
+
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="customers" style="display: flex; align-items: center;">
+                    <ion-icon name="man-outline"
+                        style="padding: 1px 2px; width: 20px; height: 20px; vertical-align: middle;"></ion-icon>
+                    <span style="margin-left: 5px;">Personale</span>
                 </a>
             </li>
         </ul>
@@ -164,10 +231,10 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+
+                    <h5 class="text-center mt-3 mb-4" id="settingsModalLabel">Settings</h5>
+
+
                     <div class="modal-body">
                         <!-- Contenuto del modal -->
                         <form>
@@ -187,23 +254,27 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                                     placeholder="Inserisci la tua password">
                             </div>
 
-                            <div class="mb-3">
-                                <label for="imageInput" class="form-label">Upload an image</label>
-                                <div class="image-upload" onclick="document.getElementById('imageInput').click()">
-                                    <ion-icon name="camera-outline" class="icon-camera"></ion-icon>
-                                    <img id="imagePreview" src="" alt="" style="display: none;">
-                                    <input type="file" id="imageInput" accept=".jpg,.jpeg,.png"
-                                        onchange="previewImage(event)">
+                            <div class="profile-picture-container"
+                                style="display: flex; align-items: center; gap: 10px;">
+                                <!-- Immagine profilo con cerchio -->
+                                <div class="profile-picture">
+                                    <img id="profileImage" src="img/npp.jpg" alt="Default Profile Picture">
+                                </div>
+                                <!-- Pulsanti per upload e rimuovi -->
+                                <div class="profile-buttons" style="display: flex; flex-direction: column; gap: 5px;">
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        onclick="uploadImage()">Upload</button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                    <!-- Input nascosto per caricamento immagine -->
+                                    <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" style="display: none;"
+                                        onchange="previewProfileImage(event)">
                                 </div>
                             </div>
 
-                            <div class="form-floating" style="flex-grow: 1;">
-                                <input type="password" class="form-control" id="password_login" name="password_login"
-                                    placeholder="Password"
-                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; padding-right: 2.5rem;">
-                                <label for="password_login">Password</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Salva modifiche</button>
+
+                            <button type="submit" class="btn btn-primary mt-4 w-100">Salva modifiche</button>
                         </form>
                     </div>
                 </div>
@@ -221,17 +292,25 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <a href="logout.php" class="btn btn-danger">Logout</a>
             </div>
         </div>
-        <div id="dashboard" class="content-section">
+        <div id="home" class="content-section">
             <h1>Dashboard</h1>
             <p>Contenuto della dashboard...</p>
+        </div>
+        <div id="analytics" class="content-section">
+            <h1>Analytics</h1>
+            <p>Contenuto delle analisi...</p>
         </div>
         <div id="orders" class="content-section">
             <h1>Orders</h1>
             <p>Contenuto degli ordini...</p>
         </div>
-        <div id="products" class="content-section">
-            <h1>Products</h1>
-            <p>Contenuto dei prodotti...</p>
+        <div id="tables" class="content-section">
+            <h1>Tables</h1>
+            <p>Contenuto dei tavoli...</p>
+        </div>
+        <div id="menu" class="content-section">
+            <h1>Menù</h1>
+            <p>Contenuto del menù...</p>
         </div>
         <div id="customers" class="content-section">
             <h1>Customers</h1>
@@ -240,24 +319,40 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     </div>
 
     <script>
-        function previewImage(event) {
-            const fileInput = event.target;
-            const file = fileInput.files[0];
-            const preview = document.getElementById('imagePreview');
-            const icon = document.querySelector('.icon-camera');
+        // Funzione per aprire il selettore di file
+        function uploadImage() {
+            const uploadInput = document.getElementById('uploadInput');
+            uploadInput.click();
+        }
 
-            if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
+        // Funzione per aggiornare l'immagine del profilo
+        function previewProfileImage(event) {
+            const input = event.target;
+            const profileImage = document.getElementById('profileImage');
+
+            if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                    icon.style.display = 'none';
+                    profileImage.src = e.target.result;
                 };
-                reader.readAsDataURL(file);
-            } else {
-                alert('Please upload a valid JPG or PNG image.');
+                reader.readAsDataURL(input.files[0]);
             }
         }
+
+        // Funzione per reimpostare l'immagine predefinita
+        function removeImage() {
+            const profileImage = document.getElementById('profileImage');
+            profileImage.src = 'img/npp.jpg'; // Percorso dell'immagine di default
+        }
+
+        // Prevenzione del comportamento predefinito (se usi un form)
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Previene il ricaricamento della pagina
+        });
+
+
+
+
 
         // JavaScript per la gestione della navigazione
         const links = document.querySelectorAll('#sidebarNav .nav-link');
