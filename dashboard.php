@@ -196,11 +196,167 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         .dropdown-divider {
             margin: 0.25rem 0;
         }
+
+        .personal-size{
+            margin: 0px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form_container{
+            width: 30vw;
+            height: 80vh;
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .create_form_input, .update_form_input{
+            padding: 8px;
+            font-size: 15px;
+        }
+
+        .create_form_button, .update_form_button{
+            padding: 10px;
+            background-color: black;
+            color: white;
+        }
+
+        .create_form_button:hover, .update_form_button:hover{
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .create_form, .update_form{
+            display: none;
+        }
+
+        .addbtn{
+            padding: 8px 15px;
+            background-color: black;
+            color: white;
+            font-size: 15px;
+        }
+
+        .addbtn:hover{
+            background-color: black;
+            cursor: pointer;
+        }
+
+        .table{
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        @media screen and (max-width:400px){
+            .form_container, .update_form_button{
+                width: 95vw;
+            }
+            .create_form_input{
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+
+        @media screen and (min-width:400px){
+            .form_container, .update_form_button{
+                width: 70vw;
+            }
+            
+        }
+
+
+        
+
     </style>
+
+<script>
+    let data = [];
+
+    function readAll() {
+        var tbdata = document.querySelector(".table_data");
+        var elements = "";
+        data.map(d => (
+            elements += `<tr>
+                            <td>${d.username}</td>
+                            <td>${d.name}</td>
+                            <td>${d.email}</td>
+                            <td>
+                                <button onclick={edit(${d.id})}>Update</button>
+                                <button onclick={delet(${d.id})}>Delete</button>
+                            </td>
+                        </tr>`
+        ));
+        tbdata.innerHTML = elements;
+    }
+
+    function createForm(){
+        document.querySelector(".create_form").style.display = "block";
+        document.querySelector(".addbtn").style.display = "none";
+
+    }
+
+    function add(){
+        var username= document.querySelector(".username").value;
+        var name= document.querySelector(".name").value;
+        var email= document.querySelector(".email").value;
+
+        var newObj = {id : 3,username, name, email}
+        data.push(newObj);
+
+        document.querySelector(".create_form").style.display = "none";
+        document.querySelector(".addbtn").style.display = "block";
+        readAll();
+
+       
+    }
+
+    function edit(id){
+        document.querySelector(".update_form").style.display = "block";
+        document.querySelector(".addbtn").style.display = "none";
+
+        var updateObj = data.find(f => f.id === id);
+        document.querySelector(".update_id").value = updateObj.id;
+        document.querySelector(".upusername").value = updateObj.name;
+        document.querySelector(".uname").value = updateObj.name;
+        document.querySelector(".uemail").value = updateObj.email;
+    }
+
+    function update(){
+        var id = parseInt(document.querySelector(".update_id").value);
+        var username = document.querySelector(".upusername").value;
+        var name = document.querySelector(".uname").value;
+        var email = document.querySelector(".uemail").value;
+        var updateObj = {id,username, name, email};
+
+        var index = data.findIndex(f => f.id === id);
+        data[index] = updateObj;
+        document.querySelector(".update_form").style.display = "none";
+        document.querySelector(".addbtn").style.display = "block";
+
+        readAll();
+    }
+
+    function delet(id){
+        var newdata = data.filter(f => f.id !== id);
+        data = newdata;
+        readAll();
+    }
+</script>
+
 
 </head>
 
-<body>
+<body onload="readAll()">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
 
@@ -359,10 +515,41 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             <h1>Menù</h1>
             <p>Contenuto del menù...</p>
         </div>
+
+
+        
         <div id="customers" class="content-section">
-            <h1>Customers</h1>
-            <p>Contenuto dei clienti...</p>
+            <div class="fore_container">
+               <form class="create_form">
+                    <input type="text" placeholder="Enter username" class="username">
+                    <input type="text" placeholder="Enter name" class="name">
+                    <input type="text" placeholder="Enter email" class="email">
+                    <button type="button" onclick="add()">Create</button>
+               </form>
+               <form class="update_form">
+                    <input type="text" hidden class="update_id">
+                    <input type="text" placeholder="Enter username" class="upusername">
+                    <input type="text" placeholder="Enter name" class="uname">
+                    <input type="text" placeholder="Enter email" class="uemail">
+                    <button type="button" onclick="update()">Update</button>
+               </form>
+               <button class="addbtn" onclick="createForm()">Add</button>
+               <br>
+               <table class="table">
+                    <thead>
+                        <th>Username</th>
+                        <th>Nome</th>
+                        <th>Ruolo</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody class="table_data">
+
+                    </tbody>
+               </table>
+            </div>
         </div>
+
+
     </div>
 
     <script>
