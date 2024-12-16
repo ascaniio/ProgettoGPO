@@ -18,6 +18,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!--<link href="css/dashboard.css" rel="stylesheet">-->
 
     <style>
         /* Stili esistenti */
@@ -126,32 +127,30 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             margin-left: 5px;
         }
 
-        /* Aggiunte e modifiche */
+        /* Modifica: Distanza ridotta tra icona e testo */
         .nav-icon {
             font-size: 20px;
             vertical-align: middle;
+            margin-right: 4px;
+            /* Ridotto da 8px a 4px */
         }
 
-     
-
         .nav-text {
-            margin-left: 5px;
+            margin-left: 3px;
+            /* Ridotto da 5px a 3px */
         }
 
         /* Sidebar base styles */
         .sidebar {
             transition: width 0.5s ease;
             width: 280px;
-            /* Cambia la larghezza della sidebar normale qui */
             position: relative;
         }
 
         .sidebar-collapsed {
-            width: 80px;
-            /* Larghezza quando la sidebar è collassata */
+            width: 90px;
         }
 
-        /* Nascondi testo quando collassata */
         .sidebar-collapsed .nav-text,
         .sidebar-collapsed .sidebar-title,
         .sidebar-collapsed .profile-name {
@@ -160,8 +159,8 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         /* Immagine del ristorante */
         .restaurant-logo {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
         }
 
@@ -173,11 +172,10 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         }
 
         .profile-name {
-            font-size: 16px;
-            margin-left: 4px;
+            font-size: 18px;
+            margin-left: 10px;
         }
 
-        /* Bottone di toggle */
         .toggle-sidebar {
             transition: all 0.5s ease;
         }
@@ -186,7 +184,6 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             margin-left: 4px;
         }
 
-        /* Stile dell'HR */
         hr {
             border: 0;
             border-top: 0px solid #dee2e6;
@@ -196,7 +193,161 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         .dropdown-divider {
             margin: 0.25rem 0;
         }
+
+        .sidebar .nav-link span {
+            margin-left: 3px;
+            /* Ridotto da 10px a 3px */
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-collapsed .nav-link span {
+            opacity: 0;
+        }
+
+        .sidebar .nav-icon {
+            margin-right: 4px;
+            /* Applicato margine ridotto */
+        }
+
+        .sidebar-collapsed .nav-icon {
+            margin-right: 0;
+        }
+
+        .dropdown-toggle::after {
+            display: none !important;
+        }
+
+        /* Sidebar espansa (stile predefinito) */
+        .profile-picture-container {
+            display: flex;
+            align-items: center;
+            /* Allinea immagine e nome utente affiancati */
+            gap: 20px;
+            /* Distanza tra immagine e nome */
+            margin-top: 0;
+            /* Nessun margine aggiuntivo */
+        }
+
+        .user-profile-pic {
+            width: 40px;
+            /* Dimensione costante dell'immagine */
+            height: 40px;
+            border-radius: 50%;
+            /* Forma circolare */
+            overflow: hidden;
+            border: 0px solid #ddd;
+            /* Bordo attorno all'immagine */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .profile-name {
+            font-size: 17px;
+            /* Dimensione del testo del nome */
+            white-space: nowrap;
+            /* Evita che il testo vada a capo */
+        }
+
+        /* Sidebar collassata */
+        .sidebar-collapsed .profile-picture-container {
+            flex-direction: column;
+            /* Dispone immagine e nome in colonna */
+            justify-content: center;
+            /* Centra contenuto verticalmente */
+            align-items: center;
+            /* Centra contenuto orizzontalmente */
+            gap: 5px;
+            /* Spaziatura ridotta tra immagine e testo */
+            margin-top: 15px;
+            /* Margine per allineare con i bottoni sopra */
+        }
+
+        .sidebar-collapsed .user-profile-pic {
+            width: 40px;
+            /* Dimensione dell'immagine invariata */
+            height: 40px;
+        }
+
+        .sidebar-collapsed .profile-name {
+            display: none;
+            /* Nasconde il nome utente */
+        }
+
+        /* Regole generali per compatibilità */
+        .sidebar {
+            transition: width 0.3s ease;
+        }
+
+        .profile-name-style {
+            padding-left: 8px;
+        }
+
+        /* Stile di base per l'icona */
+        .sidebar-icon {
+            font-size: 30px;
+            color: black;
+            padding-top: 6px;
+            padding-left: 5px;
+            /* Imposta il colore di base dell'icona */
+        }
+
+        /* Rimuove il bordo e rende il pulsante trasparente */
+        .btn.toggle-sidebar {
+            border: none;
+            background: transparent;
+            padding-left: 4px;
+            outline: none;
+            cursor: pointer;
+
+
+        }
+
+        /* Aggiunge lo sfondo al passaggio con il mouse */
+        .btn.toggle-sidebar:hover {
+
+            /* Colore di sfondo al passaggio */
+            border-radius: 50%;
+            /* Mantieni l'aspetto circolare */
+        }
+
+        /* Allinea il pulsante con le icone quando la sidebar è chiusa */
+        .sidebar-closed .btn.toggle-sidebar {
+            border: none;
+            background: transparent;
+            padding-left: 4px;
+            outline: none;
+            cursor: pointer;
+
+
+        }
+
+
+        .justify-content-between.align-items-start {
+            display: flex;
+            /* Mantiene gli elementi sulla stessa riga */
+            align-items: center;
+            /* Allinea verticalmente */
+        }
+
+        .toggle-sidebar {
+            white-space: nowrap;
+            /* Previene che il contenuto vada a capo */
+        }
+
+        .sidebar-closed .justify-content-between.align-items-start {
+            display: none;
+            /* Mantiene gli elementi sulla stessa riga */
+            align-items: none;
+            /* Allinea verticalmente */
+        }
+
+        .sidebar-closed .toggle-sidebar {
+            white-space: none;
+        }
     </style>
+
 
 </head>
 
@@ -206,17 +357,21 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 sidebar" id="mainSidebar">
-        <div class="d-flex justify-content-between align-items-center mb-3 mb-md-0">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
-            <img src="img/npp.jpg" alt="" class="sidebar-logo rounded-circle me-2 restaurant-logo">    
-            <strong class="sidebar-title"><span class="fs-4">Pizzeria</span></strong>
-            </a>
-            <button class="btn btn-outline-secondary btn-sm toggle-sidebar" id="toggleSidebar"
-                aria-label="Toggle sidebar">
-                <ion-icon name="chevron-back-outline" style="font-size: 20px;"></ion-icon>
+        <div class="justify-content-between align-items-start mb-3 mb-md-0">
+            <div class="profile-name-style">
+                <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
+                    <img src="img/npp.jpg" alt="" class="sidebar-logo rounded-circle me-2 restaurant-logo">
+                    <strong class="sidebar-title"><span class="fs-4">Pizzeria</span></strong>
+                </a>
+            </div>
+
+            <button class="btn toggle-sidebar" id="toggleSidebar" aria-label="Toggle sidebar">
+                <ion-icon name="caret-back-circle-outline" class="sidebar-icon"></ion-icon>
             </button>
+
         </div>
-        <hr class="mt-0 mb-3">
+<br>
+
         <ul class="nav nav-pills flex-column mb-auto" id="sidebarNav">
             <li class="nav-item">
                 <a href="#" class="nav-link active" data-target="home">
@@ -255,11 +410,10 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 </a>
             </li>
         </ul>
-        <hr class="mt-0 mb-3">
-        <div class="dropdown mt-auto">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="img/npp.jpg" alt="" class="rounded-circle me-2 user-profile-pic">
+        <div class="dropdown mt-auto profile-picture-container">
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="img/npp.jpg" alt="" class="rounded-circle user-profile-pic">
                 <strong class="profile-name">dapinovittorioveneto</strong>
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
@@ -274,6 +428,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <li><a class="dropdown-item" href="logout.php">Sign Out</a></li>
             </ul>
         </div>
+
     </div>
 
     <!-- Modal per Settings -->
@@ -392,8 +547,8 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
             // Cambia l'icona del pulsante
             this.querySelector('ion-icon').name = sidebar.classList.contains('sidebar-collapsed')
-                ? 'chevron-forward-outline'
-                : 'chevron-back-outline';
+                ? 'caret-forward-circle-outline'
+                : 'caret-back-circle-outline';
         });
 
         // Funzione per reimpostare l'immagine predefinita
