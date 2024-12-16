@@ -193,165 +193,11 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         .dropdown-divider {
             margin: 0.25rem 0;
         }
-
-        .sidebar .nav-link span {
-            margin-left: 3px;
-            /* Ridotto da 10px a 3px */
-            transition: opacity 0.3s ease;
-        }
-
-        .sidebar-collapsed .nav-link span {
-            opacity: 0;
-        }
-
-        .sidebar .nav-icon {
-            margin-right: 4px;
-            /* Applicato margine ridotto */
-        }
-
-        .sidebar-collapsed .nav-icon {
-            margin-right: 0;
-        }
-
-        .dropdown-toggle::after {
-            display: none !important;
-        }
-
-        /* Sidebar espansa (stile predefinito) */
-        .profile-picture-container {
-            display: flex;
-            align-items: center;
-            /* Allinea immagine e nome utente affiancati */
-            gap: 20px;
-            /* Distanza tra immagine e nome */
-            margin-top: 0;
-            /* Nessun margine aggiuntivo */
-        }
-
-        .user-profile-pic {
-            width: 40px;
-            /* Dimensione costante dell'immagine */
-            height: 40px;
-            border-radius: 50%;
-            /* Forma circolare */
-            overflow: hidden;
-            border: 0px solid #ddd;
-            /* Bordo attorno all'immagine */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-        }
-
-        .profile-name {
-            font-size: 17px;
-            /* Dimensione del testo del nome */
-            white-space: nowrap;
-            /* Evita che il testo vada a capo */
-        }
-
-        /* Sidebar collassata */
-        .sidebar-collapsed .profile-picture-container {
-            flex-direction: column;
-            /* Dispone immagine e nome in colonna */
-            justify-content: center;
-            /* Centra contenuto verticalmente */
-            align-items: center;
-            /* Centra contenuto orizzontalmente */
-            gap: 5px;
-            /* Spaziatura ridotta tra immagine e testo */
-            margin-top: 15px;
-            /* Margine per allineare con i bottoni sopra */
-        }
-
-        .sidebar-collapsed .user-profile-pic {
-            width: 40px;
-            /* Dimensione dell'immagine invariata */
-            height: 40px;
-        }
-
-        .sidebar-collapsed .profile-name {
-            display: none;
-            /* Nasconde il nome utente */
-        }
-
-        /* Regole generali per compatibilità */
-        .sidebar {
-            transition: width 0.3s ease;
-        }
-
-        .profile-name-style {
-            padding-left: 8px;
-        }
-
-        /* Stile di base per l'icona */
-        .sidebar-icon {
-            font-size: 30px;
-            color: black;
-            padding-top: 6px;
-            padding-left: 5px;
-            /* Imposta il colore di base dell'icona */
-        }
-
-        /* Rimuove il bordo e rende il pulsante trasparente */
-        .btn.toggle-sidebar {
-            border: none;
-            background: transparent;
-            padding-left: 4px;
-            outline: none;
-            cursor: pointer;
-
-
-        }
-
-        /* Aggiunge lo sfondo al passaggio con il mouse */
-        .btn.toggle-sidebar:hover {
-
-            /* Colore di sfondo al passaggio */
-            border-radius: 50%;
-            /* Mantieni l'aspetto circolare */
-        }
-
-        /* Allinea il pulsante con le icone quando la sidebar è chiusa */
-        .sidebar-closed .btn.toggle-sidebar {
-            border: none;
-            background: transparent;
-            padding-left: 4px;
-            outline: none;
-            cursor: pointer;
-
-
-        }
-
-
-        .justify-content-between.align-items-start {
-            display: flex;
-            /* Mantiene gli elementi sulla stessa riga */
-            align-items: center;
-            /* Allinea verticalmente */
-        }
-
-        .toggle-sidebar {
-            white-space: nowrap;
-            /* Previene che il contenuto vada a capo */
-        }
-
-        .sidebar-closed .justify-content-between.align-items-start {
-            display: none;
-            /* Mantiene gli elementi sulla stessa riga */
-            align-items: none;
-            /* Allinea verticalmente */
-        }
-
-        .sidebar-closed .toggle-sidebar {
-            white-space: none;
-        }
     </style>
-
 
 </head>
 
-<body>
+<body onload="readAll()">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
 
@@ -514,10 +360,41 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             <h1>Menù</h1>
             <p>Contenuto del menù...</p>
         </div>
+
+
+        
         <div id="customers" class="content-section">
-            <h1>Customers</h1>
-            <p>Contenuto dei clienti...</p>
+            <div class="fore_container">
+               <form class="create_form">
+                    <input type="text" placeholder="Enter username" class="username">
+                    <input type="text" placeholder="Enter name" class="name">
+                    <input type="text" placeholder="Enter email" class="email">
+                    <button type="button" onclick="add()">Create</button>
+               </form>
+               <form class="update_form">
+                    <input type="text" hidden class="update_id">
+                    <input type="text" placeholder="Enter username" class="upusername">
+                    <input type="text" placeholder="Enter name" class="uname">
+                    <input type="text" placeholder="Enter email" class="uemail">
+                    <button type="button" onclick="update()">Update</button>
+               </form>
+               <button class="addbtn" onclick="createForm()">Add</button>
+               <br>
+               <table class="table">
+                    <thead>
+                        <th>Username</th>
+                        <th>Nome</th>
+                        <th>Ruolo</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody class="table_data">
+
+                    </tbody>
+               </table>
+            </div>
         </div>
+
+
     </div>
 
     <script>
