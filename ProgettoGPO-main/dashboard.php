@@ -19,7 +19,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!--<link href="css/dashboard.css" rel="stylesheet">-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         /* Stili esistenti */
         body {
@@ -366,7 +366,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             </div>
 
             <button class="btn toggle-sidebar" id="toggleSidebar" aria-label="Toggle sidebar">
-                <ion-icon name="chevron-back-outline" class="sidebar-icon"></ion-icon>
+                <ion-icon name="caret-back-circle-outline" class="sidebar-icon"></ion-icon>
             </button>
 
         </div>
@@ -407,18 +407,6 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <a href="#" class="nav-link" data-target="customers">
                     <ion-icon name="people-outline" class="nav-icon"></ion-icon>
                     <span class="nav-text">Personale</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" data-target="settings">
-                    <ion-icon name="construct-outline" class="nav-icon"></ion-icon>
-                    <span class="nav-text">Gestione</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" data-target="qrcode">
-                    <ion-icon name="qr-code-outline" class="nav-icon"></ion-icon>
-                    <span class="nav-text">QR Code</span>
                 </a>
             </li>
         </ul>
@@ -600,112 +588,106 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
     <!-- Modal per la modifica delle portate -->
     <!-- Modal per Modificare Pizza -->
-    <div class="modal fade" id="modificaPizzaModal" tabindex="-1" role="dialog"
-        aria-labelledby="modificaPizzaModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modificaPizzaModalLabel">Modifica Pizza</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="pizzaName">Nome Pizza</label>
-                            <input type="text" class="form-control" id="pizzaName" value="Pizza Margherita">
-                        </div>
-                        <div class="form-group">
-                            <label for="pizzaDescription">Descrizione</label>
-                            <textarea class="form-control"
-                                id="pizzaDescription">Una pizza semplice con pomodoro e mozzarella.</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="pizzaPrice">Prezzo</label>
-                            <input type="text" class="form-control" id="pizzaPrice" value="€8">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-primary">Salva modifiche</button>
+    <div class="modal fade" id="modificaPizzaModal" tabindex="-1" role="dialog" aria-labelledby="modificaPizzaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modificaPizzaModalLabel">Modifica Pizza</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="pizzaName">Nome Pizza</label>
+                                <input type="text" class="form-control" id="pizzaName" value="Pizza Margherita">
+                            </div>
+                            <div class="form-group">
+                                <label for="pizzaDescription">Descrizione</label>
+                                <textarea class="form-control" id="pizzaDescription">Una pizza semplice con pomodoro e mozzarella.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="pizzaPrice">Prezzo</label>
+                                <input type="text" class="form-control" id="pizzaPrice" value="€8">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-primary">Salva modifiche</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Modale per Modificare Bibite -->
-    <div class="modal fade" id="modificaBibiteModal" tabindex="-1" role="dialog"
-        aria-labelledby="modificaBibiteModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modificaBibiteModalLabel">Modifica Bibita</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="bibiteName">Nome Bibita</label>
-                            <input type="text" class="form-control" id="bibiteName" value="Coca-Cola">
-                        </div>
-                        <div class="form-group">
-                            <label for="bibiteDescription">Descrizione</label>
-                            <textarea class="form-control"
-                                id="bibiteDescription">Bibita gassata con cola e zucchero.</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="bibitePrice">Prezzo</label>
-                            <input type="text" class="form-control" id="bibitePrice" value="€2">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-primary">Salva modifiche</button>
+    <div class="modal fade" id="modificaBibiteModal" tabindex="-1" role="dialog" aria-labelledby="modificaBibiteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modificaBibiteModalLabel">Modifica Bibita</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="bibiteName">Nome Bibita</label>
+                                <input type="text" class="form-control" id="bibiteName" value="Coca-Cola">
+                            </div>
+                            <div class="form-group">
+                                <label for="bibiteDescription">Descrizione</label>
+                                <textarea class="form-control" id="bibiteDescription">Bibita gassata con cola e zucchero.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="bibitePrice">Prezzo</label>
+                                <input type="text" class="form-control" id="bibitePrice" value="€2">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-primary">Salva modifiche</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Modale per Modificare Altra Categoria -->
-    <div class="modal fade" id="modificaAltraCategoriaModal" tabindex="-1" role="dialog"
-        aria-labelledby="modificaAltraCategoriaModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modificaAltraCategoriaModalLabel">Modifica Altra Categoria</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="categoriaName">Nome Categoria</label>
-                            <input type="text" class="form-control" id="categoriaName" value="Patatine e Cotoletta">
-                        </div>
-                        <div class="form-group">
-                            <label for="categoriaDescription">Descrizione</label>
-                            <textarea class="form-control"
-                                id="categoriaDescription">Piatti gustosi per un pranzo veloce.</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="categoriaPrice">Prezzo</label>
-                            <input type="text" class="form-control" id="categoriaPrice" value="€10">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-primary">Salva modifiche</button>
+    <div class="modal fade" id="modificaAltraCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="modificaAltraCategoriaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modificaAltraCategoriaModalLabel">Modifica Altra Categoria</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="categoriaName">Nome Categoria</label>
+                                <input type="text" class="form-control" id="categoriaName" value="Patatine e Cotoletta">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoriaDescription">Descrizione</label>
+                                <textarea class="form-control" id="categoriaDescription">Piatti gustosi per un pranzo veloce.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoriaPrice">Prezzo</label>
+                                <input type="text" class="form-control" id="categoriaPrice" value="€10">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-primary">Salva modifiche</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 
@@ -718,6 +700,10 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             <div class="text-center">
                 <a href="logout.php" class="btn btn-danger">Logout</a>
             </div>
+        </div>
+        <div id="home" class="content-section">
+            <h1>Dashboard</h1>
+            <p>Contenuto della dashboard...</p>
         </div>
         <div id="analytics" class="content-section">
             <h1>Analytics</h1>
@@ -736,8 +722,8 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <script>
         // Empty data for demonstration purposes
         const emptyData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "Negri"],
-            values: [8, 4, 1, 0, 0, 2, 5, 1, 3]
+            labels: ["January", "February", "March", "April", "May"],
+            values: [0, 0, 0, 0, 0]
         };
 
         // Populate Revenue Chart
@@ -817,17 +803,14 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                     <!-- Card Orizzontale per Pizze -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Pizza"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                                <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Pizza" style="width: 150px; height: 150px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">Pizze</h5>
                                 <p class="card-text">Scopri la nostra selezione di pizze fresche e gustose.</p>
 
                                 <!-- Pulsanti per Modifica e Elimina -->
-                                <button class="btn btn-warning" data-toggle="modal"
-                                    data-target="#modificaPizzaModal">Modifica</button>
-                                <button class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Elimina</button>
+                                <button class="btn btn-warning" data-toggle="modal" data-target="#modificaPizzaModal">Modifica</button>
+                                <button class="btn btn-danger"data-bs-toggle="modal" data-bs-target="#deleteModal">Elimina</button>
                             </div>
                         </div>
                     </div>
@@ -835,17 +818,14 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                     <!-- Card Orizzontale per Bibite -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/bibite.jpg" class="card-img-left" alt="Bibite"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                                <img src="img/bibite.jpg" class="card-img-left" alt="Bibite" style="width: 150px; height: 150px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">Bibite</h5>
                                 <p class="card-text">Aggiungi una bibita per accompagnare il tuo pasto.</p>
 
                                 <!-- Pulsanti per Modifica e Elimina -->
-                                <button class="btn btn-warning" data-toggle="modal"
-                                    data-target="#modificaBibiteModalLabel">Modifica</button>
-                                <button class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Elimina</button>
+                                <button class="btn btn-warning" data-toggle="modal" data-target="#modificaBibiteModalLabel">Modifica</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Elimina</button>
                             </div>
                         </div>
                     </div>
@@ -853,17 +833,14 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                     <!-- Card Orizzontale per Altra Categoria -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                                <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria" style="width: 150px; height: 150px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">Altra Categoria</h5>
                                 <p class="card-text">Esplora altre opzioni del nostro menu.</p>
 
                                 <!-- Pulsanti per Modifica e Elimina -->
-                                <button class="btn btn-warning" data-toggle="modal"
-                                    data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                <button class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Elimina</button>
+                                <button class="btn btn-warning" data-toggle="modal" data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Elimina</button>
                             </div>
                         </div>
                     </div>
@@ -871,149 +848,131 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             </div>
         </div>
 
-        <!--Customers -->
-        <div id="customers" class="content-section">
-            <div class="container my-5">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h2>Personale</h2>
-                    <!-- Pulsante Aggiungi sopra la colonna Action -->
-                </div>
-                <br>
-                <table class="table">
-                    <thead>
-                        <!-- Nuova riga per il pulsante sopra "Action" -->
-                        <tr>
-                            <th colspan="6" class="text-end">
-                                <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-                                    role="button">Aggiungi</a>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Username</th>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Email</th>
-                            <th>Ruolo</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        //inserire il database
-                        ?>
-                        <tr>
-                            <td>Billy</td>
-                            <td>Bill</td>
-                            <td>Gates</td>
-                            <td>billygatto@gmail.com</td>
-                            <td>Capo</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm editButton" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">
-                                    <ion-icon name="pencil-outline"></ion-icon>
-                                </button>
-                                <button class="btn btn-danger btn-sm deleteButton" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <ion-icon name="trash-outline"></ion-icon>
-                                </button>
-                            </td>
-                        </tr>
+    <!--Customers -->
+    <div id="customers" class="content-section">
+        <div class="container my-5">
+            <h2>Personale</h2>
+            <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#addModal" role="button">Aggiungi</a>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Email</th>
+                        <th>Ruolo</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    //inserire il database
+                    ?>
+                    <tr>
+                        <td>Billy</td>
+                        <td>Bill</td>
+                        <td>Gates</td>
+                        <td>billygatto@gmail.com</td>
+                        <td>Capo</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm editButton" data-bs-toggle="modal" data-bs-target="#editModal">
+                                <ion-icon name="pencil-outline"></ion-icon>
+                            </button>
+                            <button class="btn btn-danger btn-sm deleteButton" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </button>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>CR7</td>
-                            <td>Cristiano</td>
-                            <td>Ronaldo</td>
-                            <td>cristianoronaldo@gmail.com</td>
-                            <td>Capo</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm editButton" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">
-                                    <ion-icon name="pencil-outline"></ion-icon>
-                                </button>
-                                <button class="btn btn-danger btn-sm deleteButton" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <ion-icon name="trash-outline"></ion-icon>
-                                </button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>CR7</td>
+                        <td>Cristiano</td>
+                        <td>Ronaldo</td>
+                        <td>cristianoronaldo@gmail.com</td>
+                        <td>Capo</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm editButton" data-bs-toggle="modal" data-bs-target="#editModal">
+                                <ion-icon name="pencil-outline"></ion-icon>
+                            </button>
+                            <button class="btn btn-danger btn-sm deleteButton" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </button>
+                        </td>
+                    </tr>
 
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
-        
+    </div>
+    </div>
 
+    <script>
+        // Funzione per aprire il selettore di file
+        function uploadImage() {
+            const uploadInput = document.getElementById('uploadInput');
+            uploadInput.click();
+        }
 
+        // Funzione per aggiornare l'immagine del profilo
+        function previewProfileImage(event) {
+            const input = event.target;
+            const profileImage = document.getElementById('profileImage');
 
-
-
-
-        <script>
-            // Funzione per aprire il selettore di file
-            function uploadImage() {
-                const uploadInput = document.getElementById('uploadInput');
-                uploadInput.click();
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
             }
+        }
 
-            // Funzione per aggiornare l'immagine del profilo
-            function previewProfileImage(event) {
-                const input = event.target;
-                const profileImage = document.getElementById('profileImage');
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('mainSidebar');
+            sidebar.classList.toggle('sidebar-collapsed');
 
-                if (input.files && input.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        profileImage.src = e.target.result;
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
+            // Cambia l'icona del pulsante
+            this.querySelector('ion-icon').name = sidebar.classList.contains('sidebar-collapsed') ?
+                'caret-forward-circle-outline' :
+                'caret-back-circle-outline';
+        });
 
-            document.getElementById('toggleSidebar').addEventListener('click', function () {
-                const sidebar = document.getElementById('mainSidebar');
-                sidebar.classList.toggle('sidebar-collapsed');
+        // Funzione per reimpostare l'immagine predefinita
+        function removeImage() {
+            const profileImage = document.getElementById('profileImage');
+            profileImage.src = 'img/npp.jpg'; // Percorso dell'immagine di default
+        }
 
-                // Cambia l'icona del pulsante
-                this.querySelector('ion-icon').name = sidebar.classList.contains('sidebar-collapsed') ?
-                    'chevron-forward-outline' :
-                    'chevron-back-outline';
+        // Prevenzione del comportamento predefinito (se usi un form)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Previene il ricaricamento della pagina
+        });
+
+
+
+
+
+        // JavaScript per la gestione della navigazione
+        const links = document.querySelectorAll('#sidebarNav .nav-link');
+        const sections = document.querySelectorAll('.content-section');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Rimuove la classe active dai link e dalle sezioni
+                links.forEach(l => l.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+
+                // Aggiunge la classe active al link e alla sezione corrispondente
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
             });
-
-            // Funzione per reimpostare l'immagine predefinita
-            function removeImage() {
-                const profileImage = document.getElementById('profileImage');
-                profileImage.src = 'img/npp.jpg'; // Percorso dell'immagine di default
-            }
-
-            // Prevenzione del comportamento predefinito (se usi un form)
-            document.querySelector('form').addEventListener('submit', function (e) {
-                e.preventDefault(); // Previene il ricaricamento della pagina
-            });
-
-
-
-
-
-            // JavaScript per la gestione della navigazione
-            const links = document.querySelectorAll('#sidebarNav .nav-link');
-            const sections = document.querySelectorAll('.content-section');
-
-            links.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Rimuove la classe active dai link e dalle sezioni
-                    links.forEach(l => l.classList.remove('active'));
-                    sections.forEach(section => section.classList.remove('active'));
-
-                    // Aggiunge la classe active al link e alla sezione corrispondente
-                    this.classList.add('active');
-                    const targetId = this.getAttribute('data-target');
-                    document.getElementById(targetId).classList.add('active');
-                });
-            });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
