@@ -62,6 +62,20 @@ if (isset($_POST["submit_login"])) {
             </div>
             <!-- Form -->
             <form action="" method="POST" class="g-3">
+                <!--Codice Ristorante-->
+                <div class="col-12 mb-4">
+                    <div class="input-group mb-1">
+                        <span class="input-group-text">
+                            <ion-icon name="earth-outline" style="font-size: 1.2rem;"></ion-icon>
+                        </span>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="ristorante_login" name="ristorante_login"
+                                placeholder="Ristoranre">
+                            <label for="ristorante_login">Ristorante</label>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Username -->
                 <div class="col-12 mb-4">
                     <div class="input-group mb-1">
@@ -102,7 +116,7 @@ if (isset($_POST["submit_login"])) {
                         <!-- Remember me -->
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="remember_login" name="remember_login">
-                            <label class="form-check-label" for="remember_login">Remember me</label>
+                            <label class="form-check-label" for="remember_login">Mantieni accesso</label>
                         </div>
                         <!-- Bottone di submit -->
                         <button type="submit" id="submit_login" name="submit_login" class="btn btn-primary btn-md">
@@ -121,7 +135,7 @@ if (isset($_POST["submit_login"])) {
 
         $_SESSION["password_login"] = $_POST["password_login"];
 
-        header("Location: dashboard.php");
+        header("Location: old.php");
 
     }
 

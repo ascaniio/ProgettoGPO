@@ -439,13 +439,17 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                        data-bs-target="#settingsModal">Settings</a>
+                        data-bs-target="#settingsModal"><ion-icon name="settings-outline"></ion-icon>Impostazioni</a>
                 </li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                        data-bs-target="#mobileModal"><ion-icon name="phone-portrait-outline"></ion-icon>Mobile</a>
+                </li>
+                <li><a class="dropdown-item" href="#"><ion-icon name="person-outline"></ion-icon>Profilo</a></li>
                 <li>
                     <hr class="dropdown-divider mt-0 mb-1">
                 </li>
-                <li><a class="dropdown-item" href="logout.php">Sign Out</a></li>
+                <li><a class="dropdown-item" href="logout.php"><ion-icon name="log-out-outline"></ion-icon>Esci</a></li>
             </ul>
         </div>
 
