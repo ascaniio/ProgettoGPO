@@ -135,7 +135,7 @@ if (isset($_POST["submit_login"])) {
 
         $_SESSION["password_login"] = $_POST["password_login"];
 
-        header("Location: old.php");
+        header("Location: dashboard.php");
 
     }
 

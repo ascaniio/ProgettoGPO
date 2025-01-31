@@ -374,58 +374,50 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <ul class="nav nav-pills flex-column mb-auto" id="sidebarNav">
             <li class="nav-item">
-                <a href="#" class="nav-link active" data-target="home"  style="display: flex; align-items: center;">
-                    <ion-icon name="home-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
+                <a href="#" class="nav-link active" data-target="home">
+                    <ion-icon name="home-outline" class="nav-icon"></ion-icon>
                     <span class="nav-text">Home</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="analytics"  style="display: flex; align-items: center;">
-                    <ion-icon name="bar-chart-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
-                    <span class="nav-text">Analitiche</span>
+                <a href="#" class="nav-link" data-target="analytics">
+                    <ion-icon name="bar-chart-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Analytics</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="tavoli"  style="display: flex; align-items: center;">
-                    <ion-icon name="restaurant-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
+                <a href="#" class="nav-link" data-target="tables">
+                    <ion-icon name="restaurant-outline" class="nav-icon"></ion-icon>
                     <span class="nav-text">Tavoli</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="ordini"  style="display: flex; align-items: center;">
-                    <ion-icon name="receipt-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
+                <a href="#" class="nav-link" data-target="orders">
+                    <ion-icon name="receipt-outline" class="nav-icon"></ion-icon>
                     <span class="nav-text">Ordini</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="menu"  style="display: flex; align-items: center;">
-                    <ion-icon name="fast-food-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
-                    <span class="nav-text">Menu</span>
+                <a href="#" class="nav-link" data-target="menu">
+                    <ion-icon name="fast-food-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Menù</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="personale"  style="display: flex; align-items: center;">
-                    <ion-icon name="people-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
+                <a href="#" class="nav-link" data-target="customers">
+                    <ion-icon name="people-outline" class="nav-icon"></ion-icon>
                     <span class="nav-text">Personale</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="gestione"  style="display: flex; align-items: center;">
-                    <ion-icon name="construct-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
+                <a href="#" class="nav-link" data-target="settings">
+                    <ion-icon name="construct-outline" class="nav-icon"></ion-icon>
                     <span class="nav-text">Gestione</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="qr"  style="display: flex; align-items: center;">
-                    <ion-icon name="qr-code-outline" class="nav-icon"
-                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
+                <a href="#" class="nav-link" data-target="qrcode">
+                    <ion-icon name="qr-code-outline" class="nav-icon"></ion-icon>
                     <span class="nav-text">QR Code</span>
                 </a>
             </li>
@@ -439,17 +431,13 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                        data-bs-target="#settingsModal"><ion-icon name="settings-outline"></ion-icon>Impostazioni</a>
+                        data-bs-target="#settingsModal">Settings</a>
                 </li>
-                <li>
-                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                        data-bs-target="#mobileModal"><ion-icon name="phone-portrait-outline"></ion-icon>Mobile</a>
-                </li>
-                <li><a class="dropdown-item" href="#"><ion-icon name="person-outline"></ion-icon>Profilo</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li>
                     <hr class="dropdown-divider mt-0 mb-1">
                 </li>
-                <li><a class="dropdown-item" href="logout.php"><ion-icon name="log-out-outline"></ion-icon>Esci</a></li>
+                <li><a class="dropdown-item" href="logout.php">Sign Out</a></li>
             </ul>
         </div>
 

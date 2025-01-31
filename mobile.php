@@ -13,21 +13,39 @@
             margin: 0 auto;
             max-width: 600px;
         }
+
         .profile-picture-container {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .btn-lg {
             font-size: 1.5rem;
         }
+
         .btn-wide {
             width: 90%;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            /* Spazio tra icona e testo */
+        }
+
+        .dropdown-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            /* Evita il ridimensionamento */
         }
     </style>
 </head>
 
 <body>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid d-flex justify-content-center">
             <div class="row w-100 align-items-center text-center">
@@ -38,25 +56,42 @@
                     <div class="dropdown profile-picture-container">
                         <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="img/npp.jpg" alt="" class="rounded-circle user-profile-pic" width="50" height="50">
+                            <img src="img/npp.jpg" alt="" class="rounded-circle user-profile-pic" width="55"
+                                height="55">
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                             <li>
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#settingsModal"><ion-icon name="settings-outline"></ion-icon>Impostazioni</a>
+                                <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#settingsModal">
+                                    <ion-icon name="settings-outline" class="dropdown-icon"></ion-icon>
+                                    <span>Impostazioni</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#mobileModal"><ion-icon name="phone-portrait-outline"></ion-icon>Mobile</a>
+                                <a class="dropdown-item d-flex align-items-center" href="dashboard.php">
+                                    <ion-icon name="desktop-outline" class="dropdown-icon"></ion-icon>
+                                    <span>Desktop</span>
+                                </a>
                             </li>
-                            <li><a class="dropdown-item" href="#"><ion-icon name="person-outline"></ion-icon>Profilo</a></li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <ion-icon name="person-outline" class="dropdown-icon"></ion-icon>
+                                    <span>Profilo</span>
+                                </a>
+                            </li>
                             <li>
                                 <hr class="dropdown-divider mt-0 mb-1">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><ion-icon name="log-out-outline"></ion-icon>Esci</a></li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                                    <ion-icon name="log-out-outline" class="dropdown-icon"></ion-icon>
+                                    <span>Esci</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-5 d-flex justify-content-center">
                     <button class="btn btn-primary btn-lg btn-wide">Tavoli</button>
                 </div>
