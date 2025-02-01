@@ -361,6 +361,35 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         .sidebar-closed .toggle-sidebar {
             white-space: none;
         }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-collapsed {
+            width: 80px;
+        }
+
+        .content {
+            margin-left: 280px;
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+            /* Per un'animazione fluida */
+        }
+
+        /* Quando la sidebar è collassata, il contenuto si adatta */
+        .sidebar-collapsed~.content {
+            margin-left: 80px;
+        }
     </style>
 
 
@@ -859,83 +888,220 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <!--Menù -->
         <div id="menu" class="content-section">
-            <h1>Menù</h1>
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <h1 class="mb-0">Menu</h1>
+                <div class="d-flex" style="width: 250px;">
+                    <select class="form-select me-2" style="max-width: 112px;" aria-label="Default select example">
+                        
+                        <option value="1">Primi</option>
+                        <option value="2">Secondi</option>
+                        <option value="2">Contorni</option>
+                        <option value="2">Bibite</option>
+                        <option value="3">Dessert</option>
+                    </select>
+                    <button class="btn btn-success flex-grow-1">Aggiungi</button>
+                </div>
+            </div>
+
+
+
             <div class="container my-4">
                 <div class="row">
                     <!-- Card Orizzontale per Pizze -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Pizza"
+                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Altra Categoria"
                                 style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body">
-                                <h5 class="card-title">Pizze</h5>
-                                <p class="card-text">Scopri la nostra selezione di pizze fresche e gustose.</p>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
 
-                                <!-- Pulsanti per Modifica e Elimina -->
-                                <button class="btn btn-warning" data-toggle="modal"
-                                    data-target="#modificaPizzaModal">Modifica</button>
-                                <button class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Elimina</button>
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card Orizzontale per Bibite -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/bibite.jpg" class="card-img-left" alt="Bibite"
+                            <img src="img/bibite.jpg" class="card-img-left" alt="Altra Categoria"
                                 style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body">
-                                <h5 class="card-title">Bibite</h5>
-                                <p class="card-text">Aggiungi una bibita per accompagnare il tuo pasto.</p>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
 
-                                <!-- Pulsanti per Modifica e Elimina -->
-                                <button class="btn btn-warning" data-toggle="modal"
-                                    data-target="#modificaBibiteModalLabel">Modifica</button>
-                                <button class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Elimina</button>
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card Orizzontale per Altra Categoria -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
                             <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
                                 style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body">
+                            <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Altra Categoria</h5>
                                 <p class="card-text">Esplora altre opzioni del nostro menu.</p>
 
-                                <!-- Pulsanti per Modifica e Elimina -->
-                                <button class="btn btn-warning" data-toggle="modal"
-                                    data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                <button class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Elimina</button>
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/bibite.jpg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <!--Personale-->
         <div id="personale" class="content-section">
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <h1 class="mb-0">Personale</h1>
+                <button class="btn btn-success ms-auto">Aggiungi</button>
+            </div>
             <div class="container my-5">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h2>Personale</h2>
-                    <!-- Pulsante Aggiungi sopra la colonna Action -->
-                </div>
-                <br>
                 <table class="table">
                     <thead>
                         <!-- Nuova riga per il pulsante sopra "Action" -->
-                        <tr>
-                            <th colspan="6" class="text-end">
-                                <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-                                    role="button">Aggiungi</a>
-                            </th>
-                        </tr>
                         <tr>
                             <th>Username</th>
                             <th>Nome</th>
@@ -1000,7 +1166,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         <div id="qr" class="content-section">
             <h1>Qr Code Generator</h1>
             <p>Contenuto dei tavoli...</p>
-            
+
         </div>
     </div>
 
