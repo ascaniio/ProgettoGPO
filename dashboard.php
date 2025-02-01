@@ -883,25 +883,46 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         <!--Tavoli-->
         <div id="tavoli" class="content-section">
             <h1>Tables</h1>
-            <p>Contenuto dei tavoli...</p>
+            <div class="col-md-4 mb-4">
+  <div class="card flex-row square-card">
+    <div class="card-body d-flex flex-column">
+      <!-- Contenuto -->
+    </div>
+  </div>
+</div>
+
         </div>
 
         <!--Menù -->
         <div id="menu" class="content-section">
             <div class="d-flex justify-content-between align-items-center p-3">
+                <!-- Sinistra: Titolo -->
                 <h1 class="mb-0">Menu</h1>
-                <div class="d-flex" style="width: 250px;">
+
+                <!-- Centro: Searchbar con larghezza fissa -->
+                <div class="mx-3" style="width: 450px;">
+                    <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input type="text" class="form-control" placeholder=""
+                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
+                </div>
+
+                <!-- Destra: Select e bottone -->
+                <div class="d-flex align-items-center">
                     <select class="form-select me-2" style="max-width: 112px;" aria-label="Default select example">
-                        
                         <option value="1">Primi</option>
                         <option value="2">Secondi</option>
                         <option value="2">Contorni</option>
                         <option value="2">Bibite</option>
                         <option value="3">Dessert</option>
                     </select>
-                    <button class="btn btn-success flex-grow-1">Aggiungi</button>
+                    <button class="btn btn-success">Aggiungi</button>
                 </div>
             </div>
+
 
 
 
@@ -1094,9 +1115,26 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <!--Personale-->
         <div id="personale" class="content-section">
-            <div class="d-flex justify-content-between align-items-center p-3">
-                <h1 class="mb-0">Personale</h1>
-                <button class="btn btn-success ms-auto">Aggiungi</button>
+        <div class="d-flex justify-content-between align-items-center p-3">
+                <!-- Sinistra: Titolo -->
+                <h1 class="mb-0">Menu</h1>
+
+                <!-- Centro: Searchbar con larghezza fissa -->
+                <div class="mx-3" style="width: 450px;">
+                    <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input type="text" class="form-control" placeholder=""
+                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
+                </div>
+
+                <!-- Destra: Select e bottone -->
+                <div class="d-flex align-items-center">
+                    
+                    <button class="btn btn-success">Aggiungi</button>
+                </div>
             </div>
             <div class="container my-5">
                 <table class="table">
