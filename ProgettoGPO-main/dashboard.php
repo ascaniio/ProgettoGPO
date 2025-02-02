@@ -43,55 +43,55 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         </div>
         <br>
         <ul class="nav nav-pills flex-column mb-auto" id="sidebarNav">
-      <li class="nav-item">
-          <a href="#" class="nav-link active" data-target="home">
-              <ion-icon name="home-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">Home</span>
-          </a>
-      </li>
-      <li class="nav-item">
-          <a href="#" class="nav-link" data-target="analitiche">
-              <ion-icon name="bar-chart-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">Analitiche</span>
-          </a>
-      </li>
-      <li class="nav-item">
-          <a href="#" class="nav-link" data-target="tavoli">
-              <ion-icon name="restaurant-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">Tavoli</span>
-          </a>
-      </li>
-      <li class="nav-item">
-          <a href="#" class="nav-link" data-target="ordini">
-              <ion-icon name="receipt-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">Ordini</span>
-          </a>
-      </li>
-      <li class="nav-item">
-          <a href="#" class="nav-link" data-target="menu">
-              <ion-icon name="fast-food-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">Menu</span>
-          </a>
-      </li>
-      <li class="nav-item">
-          <a href="#" class="nav-link" data-target="personale">
-              <ion-icon name="people-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">Personale</span>
-          </a>
-      </li>
-      <li class="nav-item">
-          <a href="#" class="nav-link" data-target="gestione">
-              <ion-icon name="construct-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">Gestione</span>
-          </a>
-      </li>
-      <li class="nav-item">
-          <a href="#" class="nav-link" data-target="qr">
-              <ion-icon name="qr-code-outline" class="nav-icon"></ion-icon>
-              <span class="nav-text">QR Code</span>
-          </a>
-      </li>
-  </ul>
+            <li class="nav-item">
+                <a href="#" class="nav-link active" data-target="home">
+                    <ion-icon name="home-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="analitiche">
+                    <ion-icon name="bar-chart-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Analitiche</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="tavoli">
+                    <ion-icon name="restaurant-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Tavoli</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="ordini">
+                    <ion-icon name="receipt-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Ordini</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="menu">
+                    <ion-icon name="fast-food-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Menu</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="personale">
+                    <ion-icon name="people-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Personale</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="gestione">
+                    <ion-icon name="construct-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">Gestione</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-target="qr">
+                    <ion-icon name="qr-code-outline" class="nav-icon"></ion-icon>
+                    <span class="nav-text">QR Code</span>
+                </a>
+            </li>
+        </ul>
         <div class="dropdown mt-auto profile-picture-container">
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -135,53 +135,53 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
     <!-- Modal per Settings -->
     <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-      <h5 class="text-center mt-3 mb-4" id="settingsModalLabel">Settings</h5>
+                <h5 class="text-center mt-3 mb-4" id="settingsModalLabel">Settings</h5>
 
-      <div class="modal-body">
-        <!-- Contenuto del modal -->
-        <form class="needs-validation" novalidate>
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username"
-                   placeholder="Inserisci il tuo username" value="username" readonly>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password"
-                   placeholder="Inserisci la tua password" required>
-          </div>
+                <div class="modal-body">
+                    <!-- Contenuto del modal -->
+                    <form class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username"
+                                placeholder="Inserisci il tuo username" value="username" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password"
+                                placeholder="Inserisci la tua password" required>
+                        </div>
 
-          <div class="profile-picture-container">
-            <!-- Immagine profilo con cerchio -->
-            <div class="profile-picture">
-              <img id="profileImage" src="img/npp.jpg" alt="Default Profile Picture">
+                        <div class="profile-picture-container">
+                            <!-- Immagine profilo con cerchio -->
+                            <div class="profile-picture">
+                                <img id="profileImage" src="img/npp.jpg" alt="Default Profile Picture">
+                            </div>
+                            <!-- Pulsanti per upload e rimuovi -->
+                            <div class="profile-buttons">
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="uploadImage()">
+                                    Upload
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <!-- Input nascosto per caricamento immagine -->
+                                <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" onchange="previewProfileImage(event)">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-4 w-100">Salva modifiche</button>
+                    </form>
+                </div>
             </div>
-            <!-- Pulsanti per upload e rimuovi -->
-            <div class="profile-buttons">
-              <button type="button" class="btn btn-outline-primary btn-sm" onclick="uploadImage()">
-                Upload
-              </button>
-              <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
-                <i class="bi bi-trash"></i>
-              </button>
-              <!-- Input nascosto per caricamento immagine -->
-              <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" onchange="previewProfileImage(event)">
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary mt-4 w-100">Salva modifiche</button>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
 
@@ -423,7 +423,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 </div>
             </div>
 
-</div>
+        </div>
 
         <!--Ordini-->
         <div id="ordini" class="content-section">
@@ -433,169 +433,169 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <!--Tavoli-->
         <div id="tavoli" class="content-section">
-    <h1>Tables</h1>
-    <br>
-    <div class="container">
-        <div id="tavoli-container" class="grid-container">
-            <!-- I bottoni verranno generati qui -->
+            <h1>Tables</h1>
+            <br>
+            <div class="container">
+                <div id="tavoli-container" class="grid-container">
+                    <!-- I bottoni verranno generati qui -->
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 
 
         <!--Menù -->
-  <div id="menu" class="content-section">
-    <div class="d-flex justify-content-between align-items-center p-3">
-      <!-- Sinistra: Titolo -->
-      <h1 class="mb-0">Menu</h1>
+        <div id="menu" class="content-section">
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <!-- Sinistra: Titolo -->
+                <h1 class="mb-0">Menu</h1>
 
-      <!-- Centro: Searchbar con larghezza fissa -->
-      <div class="mx-3 fixed-search">
-        <div class="input-group">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
-          <input type="text" class="form-control" placeholder=""
-                 aria-label="Example text with button addon" aria-describedby="button-addon1">
-        </div>
-      </div>
+                <!-- Centro: Searchbar con larghezza fissa -->
+                <div class="mx-3 fixed-search">
+                    <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input type="text" class="form-control" placeholder=""
+                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
+                </div>
 
-      <!-- Destra: Select e bottone -->
-      <div class="d-flex align-items-center">
-        <select class="form-select me-2 fixed-select" aria-label="Default select example">
-          <option value="1">Primi</option>
-          <option value="2">Secondi</option>
-          <option value="2">Contorni</option>
-          <option value="2">Bibite</option>
-          <option value="3">Dessert</option>
-        </select>
-        <button class="btn btn-success">Aggiungi</button>
-      </div>
-    </div>
-
-    <div class="container my-4">
-      <div class="row">
-        <!-- Card Orizzontale per Pizze -->
-        <div class="col-md-4 mb-4">
-          <div class="card flex-row">
-            <img src="img/pizza_margherita.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Altra Categoria</h5>
-              <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-              <!-- Contenitore flessibile per i pulsanti -->
-              <div class="d-flex w-100">
-                <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Elimina</button>
-              </div>
+                <!-- Destra: Select e bottone -->
+                <div class="d-flex align-items-center">
+                    <select class="form-select me-2 fixed-select" aria-label="Default select example">
+                        <option value="1">Primi</option>
+                        <option value="2">Secondi</option>
+                        <option value="2">Contorni</option>
+                        <option value="2">Bibite</option>
+                        <option value="3">Dessert</option>
+                    </select>
+                    <button class="btn btn-success">Aggiungi</button>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Card per Bibite -->
-        <div class="col-md-4 mb-4">
-          <div class="card flex-row">
-            <img src="img/bibite.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Altra Categoria</h5>
-              <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-              <div class="d-flex w-100">
-                <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Elimina</button>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div class="container my-4">
+                <div class="row">
+                    <!-- Card Orizzontale per Pizze -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/pizza_margherita.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Card per Patatine e Cotoletta -->
-        <div class="col-md-4 mb-4">
-          <div class="card flex-row">
-            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Altra Categoria</h5>
-              <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-              <div class="d-flex w-100">
-                <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Elimina</button>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <!-- Card per Bibite -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/bibite.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Card aggiuntive (ripeti la struttura per ogni elemento) -->
-        <div class="col-md-4 mb-4">
-          <div class="card flex-row">
-            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Altra Categoria</h5>
-              <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-              <div class="d-flex w-100">
-                <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Elimina</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4 mb-4">
-          <div class="card flex-row">
-            <img src="img/pizza_margherita.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Altra Categoria</h5>
-              <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-              <div class="d-flex w-100">
-                <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Elimina</button>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <!-- Card per Patatine e Cotoletta -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="card flex-row">
-            <img src="img/bibite.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Altra Categoria</h5>
-              <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-              <div class="d-flex w-100">
-                <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Elimina</button>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <!-- Card aggiuntive (ripeti la struttura per ogni elemento) -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="card flex-row">
-            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Altra Categoria</h5>
-              <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-              <div class="d-flex w-100">
-                <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Elimina</button>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/pizza_margherita.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-      </div>
-    </div>
-  </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/bibite.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         <!--Personale-->
         <div id="personale" class="content-section">
@@ -685,24 +685,31 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         </div>
 
         <!--Qr Code-->
-        <div id="qr" class="content-section">
-            <h1>Qr Code Generator</h1>
+        <div id="qr" class="content-section" style="margin-top: 125px;">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow p-4">
+                        <h1 class="text-center">QR Code Generator</h1>
 
-                <div class="container">
-                    <p>Inserire URL</p>
-                    <input type="text" placeholder="URL" id="qrText">
+                        <div class="mb-3">
+                            <label for="qrText" class="form-label fw-bold">Inserire l'URL</label>
+                            <input type="text" class="form-control" id="qrText" placeholder="URL">
+                        </div>
 
-                    <div id="imgBox">
-                        <img src="" id="qrImage">
+                        <div id="imgBox">
+                            <img src="" id="qrImage">
+                        </div>
+
+                        <input type="submit" class="btn btn-primary w-100" onclick="generaQR()" value="Genera QR Code" />
+
                     </div>
-
-                    <button onclick="generaQR()">Generate QR CODE</button>
                 </div>
-
+            </div>
         </div>
-    </div>
 
-    <script src="./js/dashboard.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="./js/dashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
