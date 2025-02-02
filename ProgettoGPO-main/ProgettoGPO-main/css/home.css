@@ -1,0 +1,51 @@
+.custom-navbar{
+    background-color: #f2f2f2;
+    height: 70px !important;
+}
+
+.navbar {
+    border-top: none !important;
+}
+
+
+.icon-large {
+    font-size: 1.2rem; /* Dimensione dell'icona ridotta */
+    width: 1.2em; /* Imposta una larghezza per l'icona */
+    height: 1.2em; /* Imposta un'altezza per l'icona */
+}
+
+.modal-custom-title{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.form-icons{
+    font-size: 1.2rem;
+}
+
+
+.search-input {
+    padding-right: 2.5rem; /* Aggiungi spazio a destra per l'icona */
+}
+
+.search-icon {
+    font-size: 1.5rem; /* Puoi regolare la dimensione dell'icona */
+    cursor: pointer;
+}
+
+
+footer {
+    color: black;
+    margin-top:10px;
+  }
+  
+  .copy {
+    font-size: 12px;
+    padding: 10px;
+    border-top: 1px solid black !important;
+  }
+  
+  .footer-middle {
+    padding-top: 2em;
+    color: black;
+  }
