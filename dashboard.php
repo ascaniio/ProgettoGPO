@@ -882,16 +882,78 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <!--Tavoli-->
         <div id="tavoli" class="content-section">
-            <h1>Tables</h1>
-            <div class="col-md-4 mb-4">
-  <div class="card flex-row square-card">
-    <div class="card-body d-flex flex-column">
-      <!-- Contenuto -->
+    <h1>Tables</h1>
+    <br>
+    <div class="container">
+        <div id="tavoli-container" class="grid-container">
+            <!-- I bottoni verranno generati qui -->
+        </div>
     </div>
-  </div>
 </div>
 
-        </div>
+<style>
+    .grid-container {
+        display: grid;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .table-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        aspect-ratio: 1 / 1; /* Mantiene i bottoni quadrati */
+    }
+
+    .table-button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<script>
+    function generaTavoli(numeroTavoli) {
+        const container = document.getElementById("tavoli-container");
+        container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
+
+        // Ottiene la larghezza disponibile del contenitore
+        const containerWidth = container.parentElement.clientWidth; 
+        const maxColumns = 8; // Numero massimo di colonne
+        const minColumns = 2; // Numero minimo di colonne
+
+        // Trova il numero ottimale di colonne (più vicino a una disposizione quadrata)
+        let columns = Math.floor(Math.sqrt(numeroTavoli)); 
+        columns = Math.min(Math.max(columns, minColumns), maxColumns); // Mantiene il numero entro i limiti
+
+        // Calcola la dimensione ottimale dei bottoni in base alla larghezza disponibile
+        const buttonSize = Math.floor(containerWidth / columns) - 10; // -10px per il gap
+
+        // Imposta la griglia dinamica
+        container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+
+        // Crea i bottoni
+        for (let i = 0; i < numeroTavoli; i++) {
+            const button = document.createElement("button");
+            button.className = "table-button";
+            button.style.width = `${buttonSize}px`;
+            button.style.height = `${buttonSize}px`; // Mantiene il bottone quadrato
+            button.textContent = `Tavolo ${i + 1}`;
+
+            container.appendChild(button);
+        }
+    }
+
+    // Esempio: genera 16 tavoli
+    window.addEventListener("resize", () => generaTavoli(16)); // Aggiorna la disposizione quando si ridimensiona la finestra
+    generaTavoli(100); // Inizializza
+</script>
+
 
         <!--Menù -->
         <div id="menu" class="content-section">
@@ -1115,7 +1177,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <!--Personale-->
         <div id="personale" class="content-section">
-        <div class="d-flex justify-content-between align-items-center p-3">
+            <div class="d-flex justify-content-between align-items-center p-3">
                 <!-- Sinistra: Titolo -->
                 <h1 class="mb-0">Menu</h1>
 
@@ -1132,7 +1194,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
                 <!-- Destra: Select e bottone -->
                 <div class="d-flex align-items-center">
-                    
+
                     <button class="btn btn-success">Aggiungi</button>
                 </div>
             </div>
