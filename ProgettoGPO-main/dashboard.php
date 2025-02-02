@@ -687,7 +687,17 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         <!--Qr Code-->
         <div id="qr" class="content-section">
             <h1>Qr Code Generator</h1>
-            <p>Contenuto dei tavoli...</p>
+
+                <div class="container">
+                    <p>Inserire URL</p>
+                    <input type="text" placeholder="URL" id="qrText">
+
+                    <div id="imgBox">
+                        <img src="" id="qrImage">
+                    </div>
+
+                    <button onclick="generaQR()">Generate QR CODE</button>
+                </div>
 
         </div>
     </div>
