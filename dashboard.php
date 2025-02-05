@@ -18,12 +18,16 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <!--<link href="css/dashboard.css" rel="stylesheet">-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-    <link rel="stylesheet" href="./css/dashboard.css">
+
+
+
 </head>
 
 <body>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
 
     <!-- Sidebar -->
@@ -42,52 +46,61 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         </div>
         <br>
+
         <ul class="nav nav-pills flex-column mb-auto" id="sidebarNav">
             <li class="nav-item">
-                <a href="#" class="nav-link active" data-target="home">
-                    <ion-icon name="home-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link active" data-target="home" style="display: flex; align-items: center;">
+                    <ion-icon name="home-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">Home</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="analitiche">
-                    <ion-icon name="bar-chart-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link" data-target="analitiche" style="display: flex; align-items: center;">
+                    <ion-icon name="bar-chart-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">Analitiche</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="tavoli">
-                    <ion-icon name="restaurant-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link" data-target="tavoli" style="display: flex; align-items: center;">
+                    <ion-icon name="restaurant-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">Tavoli</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="ordini">
-                    <ion-icon name="receipt-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link" data-target="ordini" style="display: flex; align-items: center;">
+                    <ion-icon name="receipt-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">Ordini</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="menu">
-                    <ion-icon name="fast-food-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link" data-target="menu" style="display: flex; align-items: center;">
+                    <ion-icon name="fast-food-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">Menu</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="personale">
-                    <ion-icon name="people-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link" data-target="personale" style="display: flex; align-items: center;">
+                    <ion-icon name="people-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">Personale</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="gestione">
-                    <ion-icon name="construct-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link" data-target="gestione" style="display: flex; align-items: center;">
+                    <ion-icon name="construct-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">Gestione</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-target="qr">
-                    <ion-icon name="qr-code-outline" class="nav-icon"></ion-icon>
+                <a href="#" class="nav-link" data-target="qr" style="display: flex; align-items: center;">
+                    <ion-icon name="qr-code-outline" class="nav-icon"
+                        style="padding: 1px 2px; width: 22px; height: 22px; vertical-align: middle;"></ion-icon>
                     <span class="nav-text">QR Code</span>
                 </a>
             </li>
@@ -140,6 +153,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
                 <h5 class="text-center mt-3 mb-4" id="settingsModalLabel">Settings</h5>
 
+
                 <div class="modal-body">
                     <!-- Contenuto del modal -->
                     <form class="needs-validation" novalidate>
@@ -158,23 +172,24 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                                 placeholder="Inserisci la tua password" required>
                         </div>
 
-                        <div class="profile-picture-container">
+                        <div class="profile-picture-container" style="display: flex; align-items: center; gap: 10px;">
                             <!-- Immagine profilo con cerchio -->
                             <div class="profile-picture">
                                 <img id="profileImage" src="img/npp.jpg" alt="Default Profile Picture">
                             </div>
                             <!-- Pulsanti per upload e rimuovi -->
-                            <div class="profile-buttons">
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="uploadImage()">
-                                    Upload
-                                </button>
+                            <div class="profile-buttons" style="display: flex; flex-direction: column; gap: 5px;">
+                                <button type="button" class="btn btn-outline-primary btn-sm"
+                                    onclick="uploadImage()">Upload</button>
                                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
                                     <i class="bi bi-trash"></i>
                                 </button>
                                 <!-- Input nascosto per caricamento immagine -->
-                                <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" onchange="previewProfileImage(event)">
+                                <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" style="display: none;"
+                                    onchange="previewProfileImage(event)">
                             </div>
                         </div>
+
 
                         <button type="submit" class="btn btn-primary mt-4 w-100">Salva modifiche</button>
                     </form>
@@ -433,14 +448,16 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <!--Tavoli-->
         <div id="tavoli" class="content-section">
-            <h1>Tables</h1>
-            <br>
-            <div class="container">
-                <div id="tavoli-container" class="grid-container">
-                    <!-- I bottoni verranno generati qui -->
-                </div>
-            </div>
+    <h1>Tables</h1>
+    <br>
+    <div class="container">
+        <div id="tavoli-container" class="grid-container">
+            <!-- I bottoni verranno generati qui -->
         </div>
+    </div>
+</div>
+
+
 
 
 
@@ -451,7 +468,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <h1 class="mb-0">Menu</h1>
 
                 <!-- Centro: Searchbar con larghezza fissa -->
-                <div class="mx-3 fixed-search">
+                <div class="mx-3" style="width: 450px;">
                     <div class="input-group">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1">
                             <ion-icon name="search-outline"></ion-icon>
@@ -463,7 +480,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
                 <!-- Destra: Select e bottone -->
                 <div class="d-flex align-items-center">
-                    <select class="form-select me-2 fixed-select" aria-label="Default select example">
+                    <select class="form-select me-2" style="max-width: 112px;" aria-label="Default select example">
                         <option value="1">Primi</option>
                         <option value="2">Secondi</option>
                         <option value="2">Contorni</option>
@@ -474,72 +491,27 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 </div>
             </div>
 
+
+
+
             <div class="container my-4">
                 <div class="row">
                     <!-- Card Orizzontale per Pizze -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/pizza_margherita.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Altra Categoria</h5>
                                 <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
                                 <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card per Bibite -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/bibite.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card per Patatine e Cotoletta -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card aggiuntive (ripeti la struttura per ogni elemento) -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">Elimina</button>
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
                             </div>
                         </div>
@@ -547,15 +519,19 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/pizza_margherita.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <img src="img/bibite.jpg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Altra Categoria</h5>
                                 <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">Elimina</button>
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
                             </div>
                         </div>
@@ -563,15 +539,19 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/bibite.jpg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Altra Categoria</h5>
                                 <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">Elimina</button>
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
                             </div>
                         </div>
@@ -579,15 +559,119 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left card-img-custom" alt="Altra Categoria">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Altra Categoria</h5>
                                 <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2 btn-no-min" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1 btn-no-min" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">Elimina</button>
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/bibite.jpg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card flex-row">
+                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Altra Categoria</h5>
+                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+
+                                <!-- Contenitore flessibile per i pulsanti -->
+                                <div class="d-flex w-100">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
+                                        data-target="#modificaAltraCategoriaModalLabel"
+                                        style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
                             </div>
                         </div>
@@ -604,7 +688,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <h1 class="mb-0">Menu</h1>
 
                 <!-- Centro: Searchbar con larghezza fissa -->
-                <div class="mx-3 fixed-search">
+                <div class="mx-3" style="width: 450px;">
                     <div class="input-group">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1">
                             <ion-icon name="search-outline"></ion-icon>
@@ -706,10 +790,14 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <script src="./js/dashboard.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/dashboard.js"></script>
 </body>
 
 </html>
