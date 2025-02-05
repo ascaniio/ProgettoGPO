@@ -1,0 +1,564 @@
+/* Stili esistenti */
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: #f8f9fa;
+    transition: width 0.3s ease;
+}
+
+.sidebar-collapsed {
+    width: 80px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.sidebar-logo {
+    height: 35px;
+    width: 35px;
+    margin-right: 8px;
+}
+
+.sidebar-collapsed .sidebar-logo {
+    display: none;
+}
+
+.profile-picture-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile-buttons .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+.modal-content {
+    border: none;
+    padding: 20px;
+    border-radius: 0.5rem;
+}
+
+.icon-padding {
+    padding: 2px 4px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.nav-link.active {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link.active ion-icon {
+    padding: 2px 4px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.nav-link.active span {
+    margin-left: 5px;
+}
+
+/* Modifica: Distanza ridotta tra icona e testo */
+.nav-icon {
+    font-size: 20px;
+    vertical-align: middle;
+    margin-right: 4px;
+    /* Ridotto da 8px a 4px */
+}
+
+.nav-text {
+    margin-left: 3px;
+    /* Ridotto da 5px a 3px */
+}
+
+/* Sidebar base styles */
+.sidebar {
+    transition: width 0.5s ease;
+    width: 280px;
+    position: relative;
+}
+
+.sidebar-collapsed {
+    width: 90px;
+}
+
+.sidebar-collapsed .nav-text,
+.sidebar-collapsed .sidebar-title,
+.sidebar-collapsed .profile-name {
+    display: none;
+}
+
+/* Immagine del ristorante */
+.restaurant-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Profilo utente */
+.user-profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.toggle-sidebar {
+    transition: all 0.5s ease;
+}
+
+.sidebar-title {
+    margin-left: 4px;
+}
+
+hr {
+    border: 0;
+    border-top: 0px solid #dee2e6;
+    margin: 0rem 0;
+}
+
+.dropdown-divider {
+    margin: 0.25rem 0;
+}
+
+.sidebar .nav-link span {
+    margin-left: 3px;
+    /* Ridotto da 10px a 3px */
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-collapsed .nav-link span {
+    opacity: 0;
+}
+
+.sidebar .nav-icon {
+    margin-right: 4px;
+    /* Applicato margine ridotto */
+}
+
+.sidebar-collapsed .nav-icon {
+    margin-right: 0;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Sidebar espansa (stile predefinito) */
+.profile-picture-container {
+    display: flex;
+    align-items: center;
+    /* Allinea immagine e nome utente affiancati */
+    gap: 20px;
+    /* Distanza tra immagine e nome */
+    margin-top: 0;
+    /* Nessun margine aggiuntivo */
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Spazio tra icona e testo */
+}
+
+.dropdown-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    /* Evita il ridimensionamento */
+}
+
+
+.user-profile-pic {
+    width: 40px;
+    /* Dimensione costante dell'immagine */
+    height: 40px;
+    border-radius: 50%;
+    /* Forma circolare */
+    overflow: hidden;
+    border: 0px solid #ddd;
+    /* Bordo attorno all'immagine */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.profile-name {
+    font-size: 17px;
+    /* Dimensione del testo del nome */
+    white-space: nowrap;
+    /* Evita che il testo vada a capo */
+}
+
+/* Sidebar collassata */
+.sidebar-collapsed .profile-picture-container {
+    flex-direction: column;
+    /* Dispone immagine e nome in colonna */
+    justify-content: center;
+    /* Centra contenuto verticalmente */
+    align-items: center;
+    /* Centra contenuto orizzontalmente */
+    gap: 5px;
+    /* Spaziatura ridotta tra immagine e testo */
+    margin-top: 15px;
+    /* Margine per allineare con i bottoni sopra */
+}
+
+.sidebar-collapsed .user-profile-pic {
+    width: 40px;
+    /* Dimensione dell'immagine invariata */
+    height: 40px;
+}
+
+.sidebar-collapsed .profile-name {
+    display: none;
+    /* Nasconde il nome utente */
+}
+
+/* Regole generali per compatibilità */
+.sidebar {
+    transition: width 0.3s ease;
+}
+
+.profile-name-style {
+    padding-left: 8px;
+}
+
+/* Stile di base per l'icona */
+.sidebar-icon {
+    font-size: 30px;
+    color: black;
+    padding-top: 6px;
+    padding-left: 5px;
+    /* Imposta il colore di base dell'icona */
+}
+
+/* Rimuove il bordo e rende il pulsante trasparente */
+.btn.toggle-sidebar {
+    border: none;
+    background: transparent;
+    padding-left: 4px;
+    outline: none;
+    cursor: pointer;
+
+
+}
+
+/* Aggiunge lo sfondo al passaggio con il mouse */
+.btn.toggle-sidebar:hover {
+
+    /* Colore di sfondo al passaggio */
+    border-radius: 50%;
+    /* Mantieni l'aspetto circolare */
+}
+
+/* Allinea il pulsante con le icone quando la sidebar è chiusa */
+.sidebar-closed .btn.toggle-sidebar {
+    border: none;
+    background: transparent;
+    padding-left: 4px;
+    outline: none;
+    cursor: pointer;
+
+
+}
+
+
+.justify-content-between.align-items-start {
+    display: flex;
+    /* Mantiene gli elementi sulla stessa riga */
+    align-items: center;
+    /* Allinea verticalmente */
+}
+
+.toggle-sidebar {
+    white-space: nowrap;
+    /* Previene che il contenuto vada a capo */
+}
+
+.sidebar-closed .justify-content-between.align-items-start {
+    display: none;
+    /* Mantiene gli elementi sulla stessa riga */
+    align-items: none;
+    /* Allinea verticalmente */
+}
+
+.sidebar-closed .toggle-sidebar {
+    white-space: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    transition: width 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar-collapsed {
+    width: 80px;
+}
+
+.content {
+    margin-left: 280px;
+    flex-grow: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    /* Per un'animazione fluida */
+}
+
+/* Quando la sidebar è collassata, il contenuto si adatta */
+.sidebar-collapsed~.content {
+    margin-left: 80px;
+}
+
+/* Stili per le icone all'interno della navigazione */
+.nav-icon {
+    padding: 1px 2px;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+}
+
+/* Stili per il container della foto profilo */
+.profile-picture-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Stili per i pulsanti relativi alla foto profilo */
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Nasconde l'input per il caricamento dell'immagine */
+#uploadInput {
+    display: none;
+}
+
+
+.grid-container {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+}
+
+.table-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    aspect-ratio: 1 / 1; /* Mantiene i bottoni quadrati */
+}
+
+.table-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Imposta la larghezza fissa per la searchbar */
+.fixed-search {
+    width: 450px;
+}
+
+/* Imposta la larghezza massima per il select */
+.fixed-select {
+    max-width: 112px;
+}
+
+/* Stili per le immagini delle card */
+.card-img-custom {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Rimuove il min-width dai pulsanti */
+.btn-no-min {
+    min-width: 0;
+}
+
+/* Parte del personale */
+.fixed-search {
+    width: 450px;
+}
+
+
+#imgBox {
+    width: 200px;
+    border-radius: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s;
+    opacity: 0;
+    text-align: center;
+}
+
+#imgBox img {
+    width: 100%;
+    padding: 10px;
+}
+
+#imgBox.show-img {
+    max-height: 300px;
+    opacity: 1;
+    margin: 10px auto;
+    border: 1px solid #d1d1d1;
+}
+
+.error {
+    animation: shake 0.1s linear 10;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
+
+.carousel {
+    max-width: 900px; /* Larghezza massima del carousel */
+    margin: auto; /* Centra il carousel */
+    padding-top: 40px;
+}
+
+.carousel-container {
+    width: 800px;  /* Larghezza fissa */
+    height: 450px; /* Altezza fissa */
+    margin: auto;
+    border: 5px solid #c71818;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    overflow: hidden; /* Evita che le immagini escano dal riquadro */
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adatta l'immagine senza deformarla */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(23%) sepia(94%) saturate(7492%) hue-rotate(357deg) brightness(96%) contrast(108%);
+}
+
+/* Cambia colore delle barre di avanzamento (indicatori) */
+.carousel-indicators button {
+    background-color: red !important;
+}
+
+.logout-container {
+    margin-top: auto;
+    /* Spinge il pulsante verso il basso */
+    text-align: center;
+    padding: 20px;
+}
+
+/* Imposta il contenitore principale per riempire tutta la pagina */
+.content {
+    min-height: 100vh;
+    /* Altezza minima pari a tutta la finestra */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centra il contenuto verticalmente */
+    align-items: center;
+    /* Centra orizzontalmente */
+    padding-top: 50px;
+    /* Aggiunge spazio sopra */
+}
+
+/* Sposta ulteriormente il carosello più in basso */
+.carousel-container {
+    margin-top: 50px;
+}
+
+/* Assicura che il pulsante Logout sia sempre in basso */
+.logout-container {
+    margin-top: auto;
+    /* Spinge il logout verso il basso */
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome-message {
+    margin-top: -100px;
+    /* Regola questo valore per alzarlo di più o di meno */
+    text-align: center;
+}
