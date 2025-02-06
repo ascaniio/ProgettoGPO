@@ -918,40 +918,60 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 </style>
 
 <script>
-    function generaTavoli(numeroTavoli) {
-        const container = document.getElementById("tavoli-container");
-        container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
+   let numeroTavoli = 80; // Modifica questo valore per cambiare il numero di tavoli
 
-        // Ottiene la larghezza disponibile del contenitore
-        const containerWidth = container.parentElement.clientWidth; 
-        const maxColumns = 8; // Numero massimo di colonne
-        const minColumns = 2; // Numero minimo di colonne
+function generaTavoli() {
+    const container = document.getElementById("tavoli-container");
+    container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
 
-        // Trova il numero ottimale di colonne (più vicino a una disposizione quadrata)
-        let columns = Math.floor(Math.sqrt(numeroTavoli)); 
-        columns = Math.min(Math.max(columns, minColumns), maxColumns); // Mantiene il numero entro i limiti
+    // Ottiene la larghezza disponibile del contenitore
+    const containerWidth = container.parentElement.clientWidth;
+    const maxColumns = 8; // Numero massimo di colonne
+    const minColumns = 2; // Numero minimo di colonne
 
-        // Calcola la dimensione ottimale dei bottoni in base alla larghezza disponibile
-        const buttonSize = Math.floor(containerWidth / columns) - 10; // -10px per il gap
+    // Determina il numero ottimale di colonne basato sui tavoli e la larghezza disponibile
+    let columns = Math.ceil(Math.sqrt(numeroTavoli));
+    columns = Math.min(Math.max(columns, minColumns), maxColumns); // Mantiene il numero di colonne entro i limiti
 
-        // Imposta la griglia dinamica
-        container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-
-        // Crea i bottoni
-        for (let i = 0; i < numeroTavoli; i++) {
-            const button = document.createElement("button");
-            button.className = "table-button";
-            button.style.width = `${buttonSize}px`;
-            button.style.height = `${buttonSize}px`; // Mantiene il bottone quadrato
-            button.textContent = `Tavolo ${i + 1}`;
-
-            container.appendChild(button);
-        }
+    // Se ci sono pochi tavoli, distribuiscili meglio per non lasciare bordi enormi
+    if (numeroTavoli <= 10) {
+        columns = Math.ceil(numeroTavoli / 2); // Massimo 5 colonne per 10 tavoli
     }
 
-    // Esempio: genera 16 tavoli
-    window.addEventListener("resize", () => generaTavoli(16)); // Aggiorna la disposizione quando si ridimensiona la finestra
-    generaTavoli(100); // Inizializza
+    // Ricalcola il numero di righe basato sulle colonne scelte
+    let rows = Math.ceil(numeroTavoli / columns);
+
+    // Calcola la dimensione ottimale dei bottoni basata sullo spazio disponibile
+    let buttonSize = Math.floor(containerWidth / columns) - 10; // -10px per il gap
+    buttonSize = Math.max(100, Math.min(buttonSize, 200)); // Mantiene tra 100px e 200px
+
+    // Imposta la griglia dinamica senza lasciare spazi enormi ai lati
+    container.style.display = "grid";
+    container.style.gridTemplateColumns = `repeat(${columns}, ${buttonSize}px)`;
+    container.style.justifyContent = "center"; // Centra i tavoli se sono pochi
+
+    // Crea i bottoni
+    for (let i = 0; i < numeroTavoli; i++) {
+        const button = document.createElement("button");
+        button.className = "table-button";
+        button.style.width = `${buttonSize}px`;
+        button.style.height = `${buttonSize}px`; // Mantiene il bottone quadrato
+        button.textContent = `Tavolo ${i + 1}`;
+
+        container.appendChild(button);
+    }
+}
+
+// 🔥 Risolve il problema: esegue la funzione SOLO quando la pagina è completamente caricata
+window.addEventListener("load", () => {
+    generaTavoli(); // Inizializza correttamente
+});
+
+window.addEventListener("resize", () => {
+    generaTavoli(); // Riadatta i tavoli quando si ridimensiona la finestra
+});
+
+
 </script>
 
 
