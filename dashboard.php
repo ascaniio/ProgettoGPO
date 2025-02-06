@@ -35,7 +35,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         }
 
         .sidebar-collapsed {
-            width: 80px;
+            width: 90px;
         }
 
         .content {
@@ -256,6 +256,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             justify-content: center;
             align-items: center;
             background-color: #fff;
+            margin-left: 10px;
         }
 
         .profile-name {
@@ -283,6 +284,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             width: 40px;
             /* Dimensione dell'immagine invariata */
             height: 40px;
+            margin-left: 0;
         }
 
         .sidebar-collapsed .profile-name {
@@ -375,7 +377,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         }
 
         .sidebar-collapsed {
-            width: 80px;
+            width: 90px;
         }
 
         .content {
@@ -389,6 +391,33 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         /* Quando la sidebar è collassata, il contenuto si adatta */
         .sidebar-collapsed~.content {
             margin-left: 80px;
+        }
+
+
+        /* Nasconde il testo nelle voci del dropdown quando la sidebar è collassata */
+        .sidebar-collapsed .dropdown-menu .dropdown-item span {
+            display: none;
+        }
+
+        /* Restringe il dropdown a una larghezza fissa e aggiunge padding verticale */
+        .sidebar-collapsed .dropdown-menu {
+            width: 50px;
+            /* Regola questo valore in base alla dimensione desiderata */
+            min-width: 50px;
+            padding-top: 0.25rem;
+            /* Spazio extra in alto */
+            padding-bottom: 0.25rem;
+            /* Spazio extra in basso */
+            padding-left: 0;
+            /* Rimuove il padding laterale se non necessario */
+            padding-right: 0;
+        }
+
+        /* Centra le icone e regola il padding degli item del dropdown */
+        .sidebar-collapsed .dropdown-menu .dropdown-item {
+            justify-content: center;
+            padding: 0.5rem;
+            /* Puoi modificare questo valore per ottenere l'aspetto ideale */
         }
     </style>
 
@@ -516,57 +545,92 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     </div>
 
     <!-- Modal per Settings -->
+    <!-- Modal per Impostazioni Account -->
     <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
-                <h5 class="text-center mt-3 mb-4" id="settingsModalLabel">Settings</h5>
+                <!-- Header del Modal -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsModalLabel">Impostazioni Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+                </div>
 
-
+                <!-- Corpo del Modal -->
                 <div class="modal-body">
-                    <!-- Contenuto del modal -->
                     <form class="needs-validation" novalidate>
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username"
-                                placeholder="Inserisci il tuo username" value="username" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password"
-                                placeholder="Inserisci la tua password" required>
-                        </div>
 
-                        <div class="profile-picture-container" style="display: flex; align-items: center; gap: 10px;">
-                            <!-- Immagine profilo con cerchio -->
-                            <div class="profile-picture">
-                                <img id="profileImage" src="img/npp.jpg" alt="Default Profile Picture">
+                        <!-- Sezione Foto Profilo + Username -->
+                        <div class="d-flex align-items-center mb-4">
+                            <!-- Foto Profilo -->
+                            <div class="profile-picture-container d-flex align-items-center gap-3">
+                                <div class="profile-picture" style="width: 80px; height: 80px;">
+                                    <img id="profileImage" src="img/npp.jpg" alt="Foto Profilo" class="rounded-circle"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <!-- Pulsanti per upload e rimozione -->
+                                <div class="profile-buttons d-flex flex-column gap-1">
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        onclick="uploadImage()">Carica</button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                    <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" style="display: none;"
+                                        onchange="previewProfileImage(event)">
+                                </div>
                             </div>
-                            <!-- Pulsanti per upload e rimuovi -->
-                            <div class="profile-buttons" style="display: flex; flex-direction: column; gap: 5px;">
-                                <button type="button" class="btn btn-outline-primary btn-sm"
-                                    onclick="uploadImage()">Upload</button>
-                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                                <!-- Input nascosto per caricamento immagine -->
-                                <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" style="display: none;"
-                                    onchange="previewProfileImage(event)">
+                            <!-- Username accanto all'immagine -->
+                            <div class="ms-3">
+                                <label class="form-label fw-bold">Username</label>
+                                <p class="mb-0 text-muted">username</p>
                             </div>
                         </div>
 
+                        <!-- Campi Nome e Cognome (affiancati) -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="firstName" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Nome" required>
+                            </div>
+                            <div class="col">
+                                <label for="lastName" class="form-label">Cognome</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Cognome" required>
+                            </div>
+                        </div>
 
-                        <button type="submit" class="btn btn-primary mt-4 w-100">Salva modifiche</button>
+                        <!-- Campi Email e Telefono (affiancati) -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="col">
+                                <label for="phone" class="form-label">Telefono</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Telefono">
+                            </div>
+                        </div>
+
+                        <!-- Campi Password e Conferma Password (affiancati) -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="password" class="form-label">Nuova Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Nuova Password">
+                            </div>
+                            <div class="col">
+                                <label for="confirmPassword" class="form-label">Conferma Password</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Conferma Password">
+                            </div>
+                        </div>
+
+                        <!-- Pulsante Salva modifiche -->
+                        <button type="submit" class="btn btn-primary w-100 mt-3">Salva modifiche</button>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
-
 
 
     <!-- Modal per Aggiungi -->
@@ -882,97 +946,98 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
         <!--Tavoli-->
         <div id="tavoli" class="content-section">
-    <h1>Tables</h1>
-    <br>
-    <div class="container">
-        <div id="tavoli-container" class="grid-container">
-            <!-- I bottoni verranno generati qui -->
+            <h1>Tables</h1>
+            <br>
+            <div class="container">
+                <div id="tavoli-container" class="grid-container">
+                    <!-- I bottoni verranno generati qui -->
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<style>
-    .grid-container {
-        display: grid;
-        gap: 10px;
-        justify-content: center;
-    }
+        <style>
+            .grid-container {
+                display: grid;
+                gap: 10px;
+                justify-content: center;
+            }
 
-    .table-button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        aspect-ratio: 1 / 1; /* Mantiene i bottoni quadrati */
-    }
+            .table-button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+                font-weight: bold;
+                border-radius: 8px;
+                cursor: pointer;
+                aspect-ratio: 1 / 1;
+                /* Mantiene i bottoni quadrati */
+            }
 
-    .table-button:hover {
-        background-color: #0056b3;
-    }
-</style>
+            .table-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
 
-<script>
-   let numeroTavoli = 80; // Modifica questo valore per cambiare il numero di tavoli
+        <script>
+            let numeroTavoli = 80; // Modifica questo valore per cambiare il numero di tavoli
 
-function generaTavoli() {
-    const container = document.getElementById("tavoli-container");
-    container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
+            function generaTavoli() {
+                const container = document.getElementById("tavoli-container");
+                container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
 
-    // Ottiene la larghezza disponibile del contenitore
-    const containerWidth = container.parentElement.clientWidth;
-    const maxColumns = 8; // Numero massimo di colonne
-    const minColumns = 2; // Numero minimo di colonne
+                // Ottiene la larghezza disponibile del contenitore
+                const containerWidth = container.parentElement.clientWidth;
+                const maxColumns = 8; // Numero massimo di colonne
+                const minColumns = 2; // Numero minimo di colonne
 
-    // Determina il numero ottimale di colonne basato sui tavoli e la larghezza disponibile
-    let columns = Math.ceil(Math.sqrt(numeroTavoli));
-    columns = Math.min(Math.max(columns, minColumns), maxColumns); // Mantiene il numero di colonne entro i limiti
+                // Determina il numero ottimale di colonne basato sui tavoli e la larghezza disponibile
+                let columns = Math.ceil(Math.sqrt(numeroTavoli));
+                columns = Math.min(Math.max(columns, minColumns), maxColumns); // Mantiene il numero di colonne entro i limiti
 
-    // Se ci sono pochi tavoli, distribuiscili meglio per non lasciare bordi enormi
-    if (numeroTavoli <= 10) {
-        columns = Math.ceil(numeroTavoli / 2); // Massimo 5 colonne per 10 tavoli
-    }
+                // Se ci sono pochi tavoli, distribuiscili meglio per non lasciare bordi enormi
+                if (numeroTavoli <= 10) {
+                    columns = Math.ceil(numeroTavoli / 2); // Massimo 5 colonne per 10 tavoli
+                }
 
-    // Ricalcola il numero di righe basato sulle colonne scelte
-    let rows = Math.ceil(numeroTavoli / columns);
+                // Ricalcola il numero di righe basato sulle colonne scelte
+                let rows = Math.ceil(numeroTavoli / columns);
 
-    // Calcola la dimensione ottimale dei bottoni basata sullo spazio disponibile
-    let buttonSize = Math.floor(containerWidth / columns) - 10; // -10px per il gap
-    buttonSize = Math.max(100, Math.min(buttonSize, 200)); // Mantiene tra 100px e 200px
+                // Calcola la dimensione ottimale dei bottoni basata sullo spazio disponibile
+                let buttonSize = Math.floor(containerWidth / columns) - 10; // -10px per il gap
+                buttonSize = Math.max(100, Math.min(buttonSize, 200)); // Mantiene tra 100px e 200px
 
-    // Imposta la griglia dinamica senza lasciare spazi enormi ai lati
-    container.style.display = "grid";
-    container.style.gridTemplateColumns = `repeat(${columns}, ${buttonSize}px)`;
-    container.style.justifyContent = "center"; // Centra i tavoli se sono pochi
+                // Imposta la griglia dinamica senza lasciare spazi enormi ai lati
+                container.style.display = "grid";
+                container.style.gridTemplateColumns = `repeat(${columns}, ${buttonSize}px)`;
+                container.style.justifyContent = "center"; // Centra i tavoli se sono pochi
 
-    // Crea i bottoni
-    for (let i = 0; i < numeroTavoli; i++) {
-        const button = document.createElement("button");
-        button.className = "table-button";
-        button.style.width = `${buttonSize}px`;
-        button.style.height = `${buttonSize}px`; // Mantiene il bottone quadrato
-        button.textContent = `Tavolo ${i + 1}`;
+                // Crea i bottoni
+                for (let i = 0; i < numeroTavoli; i++) {
+                    const button = document.createElement("button");
+                    button.className = "table-button";
+                    button.style.width = `${buttonSize}px`;
+                    button.style.height = `${buttonSize}px`; // Mantiene il bottone quadrato
+                    button.textContent = `Tavolo ${i + 1}`;
 
-        container.appendChild(button);
-    }
-}
+                    container.appendChild(button);
+                }
+            }
 
-// 🔥 Risolve il problema: esegue la funzione SOLO quando la pagina è completamente caricata
-window.addEventListener("load", () => {
-    generaTavoli(); // Inizializza correttamente
-});
+            // 🔥 Risolve il problema: esegue la funzione SOLO quando la pagina è completamente caricata
+            window.addEventListener("load", () => {
+                generaTavoli(); // Inizializza correttamente
+            });
 
-window.addEventListener("resize", () => {
-    generaTavoli(); // Riadatta i tavoli quando si ridimensiona la finestra
-});
+            window.addEventListener("resize", () => {
+                generaTavoli(); // Riadatta i tavoli quando si ridimensiona la finestra
+            });
 
 
-</script>
+        </script>
 
 
         <!--Menù -->
