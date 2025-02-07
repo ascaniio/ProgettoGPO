@@ -22,8 +22,6 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <!--<link href="css/dashboard.css" rel="stylesheet">-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-
 </head>
 
 <body>
@@ -147,57 +145,92 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     </div>
 
     <!-- Modal per Settings -->
+    <!-- Modal per Impostazioni Account -->
     <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
-                <h5 class="text-center mt-3 mb-4" id="settingsModalLabel">Settings</h5>
+                <!-- Header del Modal -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsModalLabel">Impostazioni Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+                </div>
 
-
+                <!-- Corpo del Modal -->
                 <div class="modal-body">
-                    <!-- Contenuto del modal -->
                     <form class="needs-validation" novalidate>
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username"
-                                placeholder="Inserisci il tuo username" value="username" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password"
-                                placeholder="Inserisci la tua password" required>
-                        </div>
 
-                        <div class="profile-picture-container" style="display: flex; align-items: center; gap: 10px;">
-                            <!-- Immagine profilo con cerchio -->
-                            <div class="profile-picture">
-                                <img id="profileImage" src="img/npp.jpg" alt="Default Profile Picture">
+                        <!-- Sezione Foto Profilo + Username -->
+                        <div class="d-flex align-items-center mb-4">
+                            <!-- Foto Profilo -->
+                            <div class="profile-picture-container d-flex align-items-center gap-3">
+                                <div class="profile-picture" style="width: 80px; height: 80px;">
+                                    <img id="profileImage" src="img/npp.jpg" alt="Foto Profilo" class="rounded-circle"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <!-- Pulsanti per upload e rimozione -->
+                                <div class="profile-buttons d-flex flex-column gap-1">
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        onclick="uploadImage()">Carica</button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                    <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" style="display: none;"
+                                        onchange="previewProfileImage(event)">
+                                </div>
                             </div>
-                            <!-- Pulsanti per upload e rimuovi -->
-                            <div class="profile-buttons" style="display: flex; flex-direction: column; gap: 5px;">
-                                <button type="button" class="btn btn-outline-primary btn-sm"
-                                    onclick="uploadImage()">Upload</button>
-                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeImage()">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                                <!-- Input nascosto per caricamento immagine -->
-                                <input type="file" id="uploadInput" accept=".jpg,.jpeg,.png" style="display: none;"
-                                    onchange="previewProfileImage(event)">
+                            <!-- Username accanto all'immagine -->
+                            <div class="ms-3">
+                                <label class="form-label fw-bold">Username</label>
+                                <p class="mb-0 text-muted">username</p>
                             </div>
                         </div>
 
+                        <!-- Campi Nome e Cognome (affiancati) -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="firstName" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Nome" required>
+                            </div>
+                            <div class="col">
+                                <label for="lastName" class="form-label">Cognome</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Cognome" required>
+                            </div>
+                        </div>
 
-                        <button type="submit" class="btn btn-primary mt-4 w-100">Salva modifiche</button>
+                        <!-- Campi Email e Telefono (affiancati) -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="col">
+                                <label for="phone" class="form-label">Telefono</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Telefono">
+                            </div>
+                        </div>
+
+                        <!-- Campi Password e Conferma Password (affiancati) -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="password" class="form-label">Nuova Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Nuova Password">
+                            </div>
+                            <div class="col">
+                                <label for="confirmPassword" class="form-label">Conferma Password</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Conferma Password">
+                            </div>
+                        </div>
+
+                        <!-- Pulsante Salva modifiche -->
+                        <button type="submit" class="btn btn-primary w-100 mt-3">Salva modifiche</button>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
-
 
 
     <!-- Modal per Aggiungi -->
@@ -300,116 +333,104 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         </div>
     </div>
 
-
-    <!-- Modal per la modifica delle portate -->
     <!-- Modal per Modificare Pizza -->
-    <div class="modal fade" id="modificaPizzaModal" tabindex="-1" role="dialog"
-        aria-labelledby="modificaPizzaModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="modificaPizzaModal" tabindex="-1" aria-labelledby="modificaPizzaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modificaPizzaModalLabel">Modifica Pizza</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
-                            <label for="pizzaName">Nome Pizza</label>
+                        <div class="mb-3">
+                            <label for="pizzaName" class="form-label">Nome Pizza</label>
                             <input type="text" class="form-control" id="pizzaName" value="Pizza Margherita">
                         </div>
-                        <div class="form-group">
-                            <label for="pizzaDescription">Descrizione</label>
-                            <textarea class="form-control"
-                                id="pizzaDescription">Una pizza semplice con pomodoro e mozzarella.</textarea>
+                        <div class="mb-3">
+                            <label for="pizzaDescription" class="form-label">Descrizione</label>
+                            <textarea class="form-control" id="pizzaDescription">Una pizza semplice con pomodoro e mozzarella.</textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="pizzaPrice">Prezzo</label>
+                        <div class="mb-3">
+                            <label for="pizzaPrice" class="form-label">Prezzo</label>
                             <input type="text" class="form-control" id="pizzaPrice" value="€8">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                     <button type="button" class="btn btn-primary">Salva modifiche</button>
                 </div>
             </div>
         </div>
     </div>
 
+
     <!-- Modale per Modificare Bibite -->
-    <div class="modal fade" id="modificaBibiteModal" tabindex="-1" role="dialog"
-        aria-labelledby="modificaBibiteModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="modificaBibiteModal" tabindex="-1" aria-labelledby="modificaBibiteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modificaBibiteModalLabel">Modifica Bibita</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
-                            <label for="bibiteName">Nome Bibita</label>
+                        <div class="mb-3">
+                            <label for="bibiteName" class="form-label">Nome Bibita</label>
                             <input type="text" class="form-control" id="bibiteName" value="Coca-Cola">
                         </div>
-                        <div class="form-group">
-                            <label for="bibiteDescription">Descrizione</label>
-                            <textarea class="form-control"
-                                id="bibiteDescription">Bibita gassata con cola e zucchero.</textarea>
+                        <div class="mb-3">
+                            <label for="bibiteDescription" class="form-label">Descrizione</label>
+                            <textarea class="form-control" id="bibiteDescription">Bibita gassata con cola e zucchero.</textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="bibitePrice">Prezzo</label>
+                        <div class="mb-3">
+                            <label for="bibitePrice" class="form-label">Prezzo</label>
                             <input type="text" class="form-control" id="bibitePrice" value="€2">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                     <button type="button" class="btn btn-primary">Salva modifiche</button>
                 </div>
             </div>
         </div>
     </div>
 
+
     <!-- Modale per Modificare Altra Categoria -->
-    <div class="modal fade" id="modificaAltraCategoriaModal" tabindex="-1" role="dialog"
-        aria-labelledby="modificaAltraCategoriaModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="modificaAltraCategoriaModal" tabindex="-1" aria-labelledby="modificaAltraCategoriaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modificaAltraCategoriaModalLabel">Modifica Altra Categoria</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
-                            <label for="categoriaName">Nome Categoria</label>
+                        <div class="mb-3">
+                            <label for="categoriaName" class="form-label">Nome Categoria</label>
                             <input type="text" class="form-control" id="categoriaName" value="Patatine e Cotoletta">
                         </div>
-                        <div class="form-group">
-                            <label for="categoriaDescription">Descrizione</label>
-                            <textarea class="form-control"
-                                id="categoriaDescription">Piatti gustosi per un pranzo veloce.</textarea>
+                        <div class="mb-3">
+                            <label for="categoriaDescription" class="form-label">Descrizione</label>
+                            <textarea class="form-control" id="categoriaDescription">Piatti gustosi per un pranzo veloce.</textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="categoriaPrice">Prezzo</label>
+                        <div class="mb-3">
+                            <label for="categoriaPrice" class="form-label">Prezzo</label>
                             <input type="text" class="form-control" id="categoriaPrice" value="€10">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                     <button type="button" class="btn btn-primary">Salva modifiche</button>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
@@ -424,33 +445,33 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <a href="logout.php" class="btn btn-danger">Logout</a>
             </div>
             <div class="carousel-container">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="2000">
-                <img class="d-block w-100" src="./img/offerta.jpg" alt="First slide">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <img class="d-block w-100" src="./img/offerta.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img class="d-block w-100" src="./img/offerta4.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img class="d-block w-100" src="./img/offerta3.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <img class="d-block w-100" src="./img/offerta4.jpg" alt="Second slide">
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <img class="d-block w-100" src="./img/offerta3.jpg" alt="Third slide">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
 
 
         </div>
@@ -486,8 +507,6 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 </div>
             </div>
         </div>
-
-
 
 
 
@@ -532,14 +551,13 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                             <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Altra Categoria"
                                 style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <h5 class="card-title">Pizza Margherita</h5>
+                                <p class="card-text">Un classico tutto italiano.</p>
 
                                 <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
                                     <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
+                                        style="min-width: 0;" data-bs-target="#modificaPizzaModal" data-bs-toggle="modal">Modifica</button>
                                     <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
                                         data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
@@ -552,14 +570,13 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                             <img src="img/bibite.jpg" class="card-img-left" alt="Altra Categoria"
                                 style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <h5 class="card-title">Bibita</h5>
+                                <p class="card-text">Un'assaporazione dei migliori vini del triveneto.</p>
 
                                 <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
                                     <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
+                                        style="min-width: 0;" data-bs-target="#modificaBibiteModal" data-bs-toggle="modal">Modifica</button>
                                     <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
                                         data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
@@ -573,13 +590,12 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                                 style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <p class="card-text">Esplora altre sfiziosità del nostro menu.</p>
 
                                 <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
                                     <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
+                                        style="min-width: 0;" data-bs-target="#modificaAltraCategoriaModal" data-bs-toggle="modal">Modifica</button>
                                     <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
                                         data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
@@ -593,120 +609,18 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                                 style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
+                                <p class="card-text">Esplora altre sfiziosità del nostro menu.</p>
 
                                 <!-- Contenitore flessibile per i pulsanti -->
                                 <div class="d-flex w-100">
                                     <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
+                                        style="min-width: 0;" data-bs-target="#modificaAltraCategoriaModal" data-bs-toggle="modal">Modifica</button>
                                     <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
                                         data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-
-                                <!-- Contenitore flessibile per i pulsanti -->
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-
-                                <!-- Contenitore flessibile per i pulsanti -->
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Altra Categoria"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-
-                                <!-- Contenitore flessibile per i pulsanti -->
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/bibite.jpg" class="card-img-left" alt="Altra Categoria"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-
-                                <!-- Contenitore flessibile per i pulsanti -->
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card flex-row">
-                            <img src="img/patatine_cotoletta.jpeg" class="card-img-left" alt="Altra Categoria"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Altra Categoria</h5>
-                                <p class="card-text">Esplora altre opzioni del nostro menu.</p>
-
-                                <!-- Contenitore flessibile per i pulsanti -->
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        data-target="#modificaAltraCategoriaModalLabel"
-                                        style="min-width: 0;">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -731,7 +645,8 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <!-- Destra: Select e bottone -->
                 <div class="d-flex align-items-center">
 
-                    <button class="btn btn-success">Aggiungi</button>
+                    <button class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#addModal">Aggiungi</button>
                 </div>
             </div>
             <div class="container my-5">
