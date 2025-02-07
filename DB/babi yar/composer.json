@@ -1,9 +1,0 @@
-{
-    "require": {
-        "slim/slim": "^4.14",
-        "guzzlehttp/guzzle": "7.5",
-        "rafaelwendel/phpsupabase": "^0.0.8",
-        "vlucas/phpdotenv": "5.5",
-        "supabase/supabase-php": "^0.0.1"
-    }
-}

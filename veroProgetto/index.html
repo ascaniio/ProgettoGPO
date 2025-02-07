@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserisci un Piatti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Inserisci un Piatto</h1>
+
+    <form id="form">
+        <label for="name">Nome Piatti:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="description">Descrizione:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="photo">URL Foto:</label>
+        <input type="text" id="photo" name="photo" required>
+
+        <label for="price">Prezzo:</label>
+        <input type="number" id="price" name="price" step="0.01" required>
+
+        <label for="available">Disponibile:</label>
+        <select id="available" name="available" required>
+            <option value="true">Sì</option>
+            <option value="false">No</option>
+        </select>
+
+        <label for="category">Categoria:</label>
+        <input type="text" id="category" name="category" required>
+
+        <button type="submit">Aggiungi Piatti</button>
+    </form>
+
+    <script type="module" src="src/main.js"></script>
+
+</body>
+</html>
