@@ -1,4 +1,5 @@
 <?php
+include('functions.php');
 session_start();
 
 // Se l'utente non è loggato, reindirizza al login
@@ -7,7 +8,6 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     exit();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +22,12 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <!--<link href="css/dashboard.css" rel="stylesheet">-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
 </head>
+
 
 <body>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-
 
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 sidebar" id="mainSidebar">
@@ -202,7 +203,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                <input type="email" class="form-control" id="emailProfilo" placeholder="Email" required>
                             </div>
                             <div class="col">
                                 <label for="phone" class="form-label">Telefono</label>
@@ -232,34 +233,33 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         </div>
     </div>
 
-
     <!-- Modal per Aggiungi -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <h5 class="text-center mt-3 mb-4" id="addModalLabel">Aggiungi Nuovo</h5>
                 <div class="modal-body">
-                    <!-- Contenuto del modal -->
-                    <form>
+                    <!-- Formulato il form con il metodo POST -->
+                    <form id="addForm" method="POST">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Inserisci username">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Inserisci username" required>
                         </div>
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Inserisci nome">
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci nome" required>
                         </div>
                         <div class="mb-3">
                             <label for="cognome" class="form-label">Cognome</label>
-                            <input type="text" class="form-control" id="cognome" placeholder="Inserisci cognome">
+                            <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Inserisci cognome" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Inserisci email">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Inserisci email" required>
                         </div>
                         <div class="mb-3">
                             <label for="ruolo" class="form-label">Ruolo</label>
-                            <select class="form-select" id="ruolo">
+                            <select class="form-select" id="ruolo" name="ruolo" required>
                                 <option value="Capo">Capo</option>
                                 <option value="Dipendente">Dipendente</option>
                                 <option value="Amministratore">Amministratore</option>
@@ -432,7 +432,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     </div>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 
     <!-- Main Content -->
@@ -441,9 +441,6 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         <div id="home" class="content-section active">
             <h1 class="text-center">Benvenuto nella Dashboard</h1>
             <p class="text-center">Ciao, <?= htmlspecialchars($_SESSION["username_login"]); ?>!</p>
-            <div class="text-center">
-                <a href="logout.php" class="btn btn-danger">Logout</a>
-            </div>
             <div class="carousel-container">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -497,16 +494,44 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
             <p>Contenuto degli ordini...</p>
         </div>
 
-        <!--Tavoli-->
+        <!-- Tavoli -->
         <div id="tavoli" class="content-section">
             <h1>Tables</h1>
             <br>
+
+            <!-- Bottone per aprire il modale -->
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tavoliModal">
+                Genera Tavoli
+            </button>
+
+            <br><br>
+
             <div class="container">
                 <div id="tavoli-container" class="grid-container">
                     <!-- I bottoni verranno generati qui -->
                 </div>
             </div>
         </div>
+
+        <!-- Modale Bootstrap per inserire il numero di tavoli -->
+        <div class="modal fade" id="tavoliModal" tabindex="-1" aria-labelledby="tavoliModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tavoliModalLabel">Inserisci il numero di tavoli</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="number" id="numeroTavoli" class="form-control" placeholder="Inserisci un numero" min="1" max="100">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-primary" id="generaTavoliBtn">Genera</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
 
@@ -629,7 +654,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         <div id="personale" class="content-section">
             <div class="d-flex justify-content-between align-items-center p-3">
                 <!-- Sinistra: Titolo -->
-                <h1 class="mb-0">Menu</h1>
+                <h1 class="mb-0">Personale</h1>
 
                 <!-- Centro: Searchbar con larghezza fissa -->
                 <div class="mx-3" style="width: 450px;">
@@ -664,45 +689,17 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                     </thead>
                     <tbody>
                         <?php
-                        //inserire il database
+                        // Chiama la funzione per stampare la tabella
+                        print_personale_table();
                         ?>
-                        <tr>
-                            <td>Billy</td>
-                            <td>Bill</td>
-                            <td>Gates</td>
-                            <td>billygatto@gmail.com</td>
-                            <td>Capo</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm editButton" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">
-                                    <ion-icon name="brush-outline"></ion-icon>
-                                </button>
-                                <button class="btn btn-danger btn-sm deleteButton" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <ion-icon name="trash-outline"></ion-icon>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>CR7</td>
-                            <td>Cristiano</td>
-                            <td>Ronaldo</td>
-                            <td>cristianoronaldo@gmail.com</td>
-                            <td>Capo</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm editButton" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">
-                                    <ion-icon name="brush"></ion-icon>
-                                </button>
-                                <button class="btn btn-danger btn-sm deleteButton" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <ion-icon name="trash"></ion-icon>
-                                </button>
-                            </td>
-                        </tr>
-
                     </tbody>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        
+                    </script>
+
+
+
                 </table>
             </div>
         </div>
@@ -740,9 +737,8 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
 
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/dashboard.js"></script>
+    <script src="DataBase/db_utente.js"></script>
 </body>
 
 </html>

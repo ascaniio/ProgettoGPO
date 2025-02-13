@@ -1,7 +1,7 @@
 // Empty data for demonstration purposes
 const emptyData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "Negri"],
-    values: [8, 4, 1, 0, 0, 2, 5, 1, 3]
+    labels: ["January", "February", "March", "April", "May", "June", "July", "August"],
+    values: [8, 4, 1, 0, 0, 2, 5, 1]
 };
 
 // Populate Revenue Chart
@@ -65,40 +65,59 @@ new Chart(dishesCtx, {
 
 
 
-function generaTavoli(numeroTavoli) {
-    const container = document.getElementById("tavoli-container");
-    container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
 
-    // Ottiene la larghezza disponibile del contenitore
-    const containerWidth = container.parentElement.clientWidth; 
-    const maxColumns = 8; // Numero massimo di colonne
-    const minColumns = 2; // Numero minimo di colonne
+document.addEventListener("DOMContentLoaded", function () {
+    function generaTavoli(numeroTavoli) {
+        const container = document.getElementById("tavoli-container");
+        container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
 
-    // Trova il numero ottimale di colonne (più vicino a una disposizione quadrata)
-    let columns = Math.floor(Math.sqrt(numeroTavoli)); 
-    columns = Math.min(Math.max(columns, minColumns), maxColumns); // Mantiene il numero entro i limiti
+        const containerWidth = container.parentElement.clientWidth;
+        const maxColumns = 10; // Fisso a 10 per riga
+        const columns = numeroTavoli < 10 ? numeroTavoli : maxColumns; // Se <10, usa quel numero
 
-    // Calcola la dimensione ottimale dei bottoni in base alla larghezza disponibile
-    const buttonSize = Math.floor(containerWidth / columns) - 10; // -10px per il gap
+        // Calcola la dimensione dei bottoni per farli stare su 10 colonne
+        let buttonSize = Math.floor(containerWidth / columns) - 10;
+        buttonSize = Math.max(30, Math.min(buttonSize, 50)); // Min 30px, Max 50px
 
-    // Imposta la griglia dinamica
-    container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+        container.style.display = "grid";
+        container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+        container.style.gap = "5px"; // Spazio tra i tavoli
 
-    // Crea i bottoni
-    for (let i = 0; i < numeroTavoli; i++) {
-        const button = document.createElement("button");
-        button.className = "table-button";
-        button.style.width = `${buttonSize}px`;
-        button.style.height = `${buttonSize}px`; // Mantiene il bottone quadrato
-        button.textContent = `Tavolo ${i + 1}`;
+        for (let i = 0; i < numeroTavoli; i++) {
+            const button = document.createElement("button");
+            button.className = "btn btn-outline-primary";
+            button.style.width = `${buttonSize}px`;
+            button.style.height = `${buttonSize}px`;
+            button.textContent = `Tavolo ${i + 1}`;
 
-        container.appendChild(button);
+            container.appendChild(button);
+        }
     }
-}
 
-// Esempio: genera 16 tavoli
-window.addEventListener("resize", () => generaTavoli(16)); // Aggiorna la disposizione quando si ridimensiona la finestra
-generaTavoli(100); // Inizializza
+    // Evento per il bottone "Genera Tavoli"
+    document.getElementById("generaTavoliBtn").addEventListener("click", function () {
+        const numeroTavoli = document.getElementById("numeroTavoli").value;
+
+        if (numeroTavoli >= 1 && numeroTavoli <= 100) {
+            generaTavoli(parseInt(numeroTavoli));
+            let modal = bootstrap.Modal.getInstance(document.getElementById("tavoliModal"));
+            modal.hide(); // Chiude il modale
+        } else {
+            alert("Inserisci un numero tra 1 e 100");
+        }
+    });
+
+    // Rende la griglia responsive quando si ridimensiona la finestra
+    window.addEventListener("resize", () => {
+        const numeroTavoli = document.getElementById("tavoli-container").childElementCount;
+        if (numeroTavoli > 0) generaTavoli(numeroTavoli);
+    });
+});
+
+
+
+
+
 
 
 
@@ -215,3 +234,7 @@ function generaQR() {
         }, 1000);
     }
 }
+
+
+
+
