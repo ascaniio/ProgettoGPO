@@ -62,65 +62,7 @@ new Chart(dishesCtx, {
     }
 });
 
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    function generaTavoli(numeroTavoli) {
-        const container = document.getElementById("tavoli-container");
-        container.innerHTML = ""; // Svuota il contenitore prima di generare nuovi tavoli
-
-        const containerWidth = container.parentElement.clientWidth;
-        const maxColumns = 10; // Fisso a 10 per riga
-        const columns = numeroTavoli < 10 ? numeroTavoli : maxColumns; // Se <10, usa quel numero
-
-        // Calcola la dimensione dei bottoni per farli stare su 10 colonne
-        let buttonSize = Math.floor(containerWidth / columns) - 10;
-        buttonSize = Math.max(30, Math.min(buttonSize, 50)); // Min 30px, Max 50px
-
-        container.style.display = "grid";
-        container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-        container.style.gap = "5px"; // Spazio tra i tavoli
-
-        for (let i = 0; i < numeroTavoli; i++) {
-            const button = document.createElement("button");
-            button.className = "btn btn-outline-primary";
-            button.style.width = `${buttonSize}px`;
-            button.style.height = `${buttonSize}px`;
-            button.textContent = `Tavolo ${i + 1}`;
-
-            container.appendChild(button);
-        }
-    }
-
-    // Evento per il bottone "Genera Tavoli"
-    document.getElementById("generaTavoliBtn").addEventListener("click", function () {
-        const numeroTavoli = document.getElementById("numeroTavoli").value;
-
-        if (numeroTavoli >= 1 && numeroTavoli <= 100) {
-            generaTavoli(parseInt(numeroTavoli));
-            let modal = bootstrap.Modal.getInstance(document.getElementById("tavoliModal"));
-            modal.hide(); // Chiude il modale
-        } else {
-            alert("Inserisci un numero tra 1 e 100");
-        }
-    });
-
-    // Rende la griglia responsive quando si ridimensiona la finestra
-    window.addEventListener("resize", () => {
-        const numeroTavoli = document.getElementById("tavoli-container").childElementCount;
-        if (numeroTavoli > 0) generaTavoli(numeroTavoli);
-    });
-});
-
-
-
-
-
-
-
-
+//tavoli
 
 document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll("#sidebarNav .nav-link");

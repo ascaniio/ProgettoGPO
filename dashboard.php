@@ -496,40 +496,49 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
         <!-- Tavoli -->
         <div id="tavoli" class="content-section">
             <h1>Tables</h1>
-            <br>
 
-            <!-- Bottone per aprire il modale -->
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tavoliModal">
-                Genera Tavoli
-            </button>
+            <style>
+                .table-button {
+                    width: 100px;
+                    height: 100px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            </style>
 
-            <br><br>
-
-            <div class="container">
-                <div id="tavoli-container" class="grid-container">
-                    <!-- I bottoni verranno generati qui -->
-                </div>
+            <div class="mb-3">
+                <label for="numTables" class="form-label">Numero di Tavoli:</label>
+                <input type="number" id="numTables" class="form-control" min="1" value="1">
             </div>
+            <button class="btn btn-primary" onclick="generateTables()">Genera Tavoli</button>
+            <div id="tablesContainer" class="mt-4 d-flex flex-wrap gap-2"></div>
+
+            <script>
+                function generateTables() {
+                    let container = document.getElementById("tablesContainer");
+                    let num = document.getElementById("numTables").value;
+                    container.innerHTML = ""; // Pulisce il contenitore
+
+                    for (let i = 0; i < num; i++) {
+                        let button = document.createElement("button");
+                        button.className = "btn btn-success table-button";
+                        button.textContent = `Tavolo ${i+1}`;
+                        button.onclick = function() {
+                            alert(`Hai cliccato sul Tavolo ${i+1}`);
+                        };
+                        container.appendChild(button);
+                    }
+                }
+            </script>
+
         </div>
 
-        <!-- Modale Bootstrap per inserire il numero di tavoli -->
-        <div class="modal fade" id="tavoliModal" tabindex="-1" aria-labelledby="tavoliModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="tavoliModalLabel">Inserisci il numero di tavoli</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="numeroTavoli" class="form-control" placeholder="Inserisci un numero" min="1" max="100">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                        <button type="button" class="btn btn-primary" id="generaTavoliBtn">Genera</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
 
 
 
@@ -541,15 +550,17 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 <h1 class="mb-0">Menu</h1>
 
                 <!-- Centro: Searchbar con larghezza fissa -->
-                <div class="mx-3" style="width: 450px;">
+                <div class="mx-3 search-bar" style="width: 450px;">
                     <div class="input-group">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                        <input type="text" class="form-control" placeholder="Cerca..." aria-label="Search">
+                        <button class="btn btn-primary" type="button">
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
-                        <input type="text" class="form-control" placeholder=""
-                            aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
                 </div>
+
+                <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
                 <!-- Destra: Select e bottone -->
                 <div class="d-flex align-items-center">
@@ -564,30 +575,58 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                 </div>
             </div>
 
-
-
-
             <div class="container my-4">
                 <div class="row">
                     <!-- Card Orizzontale per Pizze -->
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
-                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Altra Categoria"
-                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 5px;">
+                            <img src="img/pizza_margherita.jpg" class="card-img-left" alt="Pizza Margherita"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 10px;">
+
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Pizza Margherita</h5>
+                                <!-- Titolo con pulsante accanto -->
+                                <div class="d-flex align-items-center mb-3">
+                                    <h5 class="card-title mb-0">Pizza Margherita</h5>
+                                    <button class="btn btn-outline-dark ms-2 p-1" data-bs-toggle="modal" data-bs-target="#ingredientiModal" style="font-size: 16px;">
+                                        <i class="bi bi-info-circle" style="font-size: 18px;"></i>
+                                    </button>
+                                </div>
+
                                 <p class="card-text">Un classico tutto italiano.</p>
 
                                 <!-- Contenitore flessibile per i pulsanti -->
-                                <div class="d-flex w-100">
-                                    <button class="btn btn-primary flex-grow-1 me-2" data-toggle="modal"
-                                        style="min-width: 0;" data-bs-target="#modificaPizzaModal" data-bs-toggle="modal">Modifica</button>
-                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
+                                <div class="d-flex w-100 mt-auto">
+                                    <button class="btn btn-primary flex-grow-1 me-2" data-bs-toggle="modal" data-bs-target="#modificaPizzaModal" style="min-width: 0;">Modifica</button>
+                                    <button class="btn btn-danger flex-grow-1" data-bs-toggle="modal" data-bs-target="#deleteModal" style="min-width: 0;">Elimina</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal per Ingredienti -->
+                    <div class="modal fade" id="ingredientiModal" tabindex="-1" aria-labelledby="ingredientiModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ingredientiModalLabel">Ingredienti della Pizza Margherita</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul>
+                                        <li>Pomodoro</li>
+                                        <li>Mozzarella</li>
+                                        <li>Basilico</li>
+                                        <li>Olio d'oliva</li>
+                                        <li>Sale</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
 
                     <div class="col-md-4 mb-4">
                         <div class="card flex-row">
@@ -694,7 +733,7 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
                     </tbody>
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <script>
-                        
+
                     </script>
 
 
@@ -739,5 +778,6 @@ if (!isset($_SESSION["username_login"]) || $_SESSION["username_login"] !== "user
     <script src="./js/dashboard.js"></script>
     <script src="DataBase/db_utente.js"></script>
 </body>
+
 
 </html>
